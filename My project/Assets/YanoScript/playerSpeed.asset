@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ff95b7ce041814bae83422a6fe2a25, type: 3}
   m_Name: playerSpeed
   m_EditorClassIdentifier: 
-  setRotaSpeed: 0.4
-  setMoveSpeed: 1
+  setRotaSpeed: 0.001
+  setAccelSpeed: 1
+  setMaxSpeed: 4

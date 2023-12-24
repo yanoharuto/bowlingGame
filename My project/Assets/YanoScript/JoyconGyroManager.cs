@@ -17,7 +17,9 @@ public class JoyconGyroManager : MonoBehaviour
     /// Gyroから所得した傾き
     /// </summary>
     static public Quaternion gyroValue { get; private set; } = new Quaternion();
-
+    /// <summary>
+    /// 角度増加分
+    /// </summary>
     static public Vector3 eulerAngleAddValue { get; private set; } = Vector3.zero;
     private Vector3 firstEulerAngle= Vector3.zero;
     /// <summary>
@@ -29,11 +31,9 @@ public class JoyconGyroManager : MonoBehaviour
 
         if (joycons == null || joycons.Count <= 0) return;
 
-        joyconL = joycons.Find(c => c.isLeft);
+        joyconL = joycons[0];
 
         gyroValue = joyconL.GetVector();
-        joyconL.Update();
-        
     }
 
     /// <summary>
@@ -41,7 +41,6 @@ public class JoyconGyroManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        joyconL.Update();
         var newVector = joyconL.GetVector();
         if (isResetGyroValue)
         {
@@ -50,7 +49,6 @@ public class JoyconGyroManager : MonoBehaviour
             
         }
         eulerAngleAddValue = newVector.eulerAngles - firstEulerAngle;
-        Debug.Log(eulerAngleAddValue);
         gyroValue = newVector;
     }
 }

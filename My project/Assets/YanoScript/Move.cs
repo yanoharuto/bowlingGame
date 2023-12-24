@@ -4,41 +4,40 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    private const float GYRO_MIN_VALUE = 12;
+    /// <summary>
+    /// 
+    /// </summary>
+    private Vector3 rotateBack = new Vector3(90,0,0);
+    /// <summary>
+    /// 移動速度をリジッドボディに反映
+    /// </summary>
     private Rigidbody rigidbody = new Rigidbody();
-    private const float MOVE_POINT_BETWEEN = 50.0f;
-    private Vector3 movePoint = new Vector3();
+    /// <summary>
+    /// プレイヤーの速さ
+    /// </summary>
+    [SerializeField] private PlayerSpeed setSpeed;
+    /// <summary>
+    /// 
+    /// </summary>
+    private float speed;
+    
     /// <summary>
     /// リジッドボディ所得
     /// </summary>
     private void Start()
     {
-        movePoint = transform.position + transform.forward * MOVE_POINT_BETWEEN;
         rigidbody = gameObject.AddComponent<Rigidbody>();
+        speed = 0;
     }
     /// <summary>
     /// 進行方向の更新
     /// </summary>
     void Update()
     {
-        movePoint = transform.position + transform.forward * MOVE_POINT_BETWEEN;
-        var addEuler = JoyconGyroManager.eulerAngleAddValue;
-
-        if (addEuler.y < -GYRO_MIN_VALUE)
+        speed += setSpeed.accelSpeed;
+        if (speed > setSpeed.maxSpeed) 
         {
-            movePoint -= transform.right;
-        }
-        else if (addEuler.y > GYRO_MIN_VALUE) 
-        {
-            movePoint += transform.right;
-        }
-        if (addEuler.x < -GYRO_MIN_VALUE) 
-        {
-            movePoint -= transform.up;
-        }
-        else if (addEuler.x > GYRO_MIN_VALUE) 
-        {
-            movePoint += transform.up;
+            speed = setSpeed.maxSpeed;
         }
     }
     /// <summary>
@@ -46,7 +45,8 @@ public class Move : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        transform.LookAt(movePoint,Vector3.up);
-        rigidbody.velocity = transform.forward * 10.0f;
+        transform.rotation = JoyconGyroManager.gyroValue;
+        transform.Rotate(rotateBack);
+        rigidbody.velocity = transform.forward * speed;
     }
 }
