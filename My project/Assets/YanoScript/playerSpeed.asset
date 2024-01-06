@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: playerSpeed
   m_EditorClassIdentifier: 
   setRotaSpeed: 0.001
-  setAccelSpeed: 1
-  setMaxSpeed: 4
+  setAccelSpeed: 3
+  setMaxSpeed: 22
