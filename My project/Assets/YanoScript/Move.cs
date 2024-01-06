@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    /// <summary>
-    /// 
-    /// </summary>
     private Vector3 rotateBack = new Vector3(90,0,0);
-    /// <summary>
     /// 移動速度をリジッドボディに反映
-    /// </summary>
-    private Rigidbody rigidbody = new Rigidbody();
+    private Rigidbody rigidbody;
     /// <summary>
     /// プレイヤーの速さ
     /// </summary>
@@ -28,6 +23,8 @@ public class Move : MonoBehaviour
     {
         rigidbody = gameObject.AddComponent<Rigidbody>();
         speed = 0;
+        transform.rotation = JoyconGyroManager.gyroValue;
+        transform.Rotate(rotateBack);
     }
     /// <summary>
     /// 進行方向の更新
@@ -45,8 +42,12 @@ public class Move : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        transform.rotation = JoyconGyroManager.gyroValue;
-        transform.Rotate(rotateBack);
+        if (JoyconManager.Instance.j[0].GetButton(Joycon.Button.SHOULDER_2))
+        {
+            transform.Rotate(-rotateBack);
+            transform.rotation = Quaternion.Lerp(transform.rotation,JoyconGyroManager.gyroValue,setSpeed.rotaSpeed);
+            transform.Rotate(rotateBack);
+        }
         rigidbody.velocity = transform.forward * speed;
     }
 }

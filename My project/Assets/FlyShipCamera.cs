@@ -13,7 +13,7 @@ public class FlyShipCamera : MonoBehaviour
     private void Start()
     {
         var playerPos = GameObjectPosition.GetDictionaryObjectPositon("Player");
-        flyShipBetween = GameObjectPosition.GetDictionaryObjectForward("Player") * betweenSize;
+        flyShipBetween = (playerPos - transform.position).normalized * betweenSize ;
         transform.position = playerPos + flyShipBetween;
         transform.LookAt(playerPos);
     }
@@ -28,15 +28,8 @@ public class FlyShipCamera : MonoBehaviour
         //プレイヤーとの距離を更新
         if (Mathf.Abs(sX) > 0.1f) 
         {
-            if (sX > 0) 
-            {
-                flyShipBetween += Vector3.Cross(flyShipBetween.normalized, Vector3.up);
-            }
-            else
-            {
-
-                flyShipBetween -= Vector3.Cross(flyShipBetween.normalized, Vector3.up);
-            }
+            var cross = Vector3.Cross(flyShipBetween.normalized, Vector3.up);
+            flyShipBetween += sX > 0 ? cross : -cross;
         }
         //プレイヤーの位置に合わせてカメラを回転と移動
         var playerPos = GameObjectPosition.GetDictionaryObjectPositon("Player");

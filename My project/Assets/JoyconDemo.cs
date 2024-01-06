@@ -33,9 +33,6 @@ public class JoyconDemo : MonoBehaviour {
 			// GetButtonDown checks if a button has been pressed (not held)
             if (j.GetButtonDown(Joycon.Button.SHOULDER_2))
             {
-				Debug.Log ("Shoulder button 2 pressed");
-				// GetStick returns a 2-element vector with x/y joystick components
-				Debug.Log(string.Format("Stick x: {0:N} Stick y: {1:N}",j.GetStick()[0],j.GetStick()[1]));
             
 				// Joycon has no magnetometer, so it cannot accurately determine its yaw value. Joycon.Recenter allows the user to reset the yaw value.
 				j.Recenter ();
@@ -43,12 +40,10 @@ public class JoyconDemo : MonoBehaviour {
 			// GetButtonDown checks if a button has been released
 			if (j.GetButtonUp (Joycon.Button.SHOULDER_2))
 			{
-				Debug.Log ("Shoulder button 2 released");
 			}
 			// GetButtonDown checks if a button is currently down (pressed or held)
 			if (j.GetButton (Joycon.Button.SHOULDER_2))
 			{
-				Debug.Log ("Shoulder button 2 held");
 			}
 
 			if (j.GetButtonDown (Joycon.Button.DPAD_DOWN)) {
@@ -73,7 +68,6 @@ public class JoyconDemo : MonoBehaviour {
             accel = j.GetAccel();
 
             orientation = j.GetVector();
-            Debug.Log(orientation);
             if (j.GetButton(Joycon.Button.DPAD_UP)){
 				gameObject.GetComponent<Renderer>().material.color = Color.red;
 			} else{
