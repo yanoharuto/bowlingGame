@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 165231335086936096}
   - component: {fileID: 157711063446846814}
   - component: {fileID: 150801678603507202}
-  - component: {fileID: 274970507091011070}
   - component: {fileID: 243508136618064584}
-  - component: {fileID: 262536465859822796}
+  - component: {fileID: 9163597113470807921}
+  - component: {fileID: 6732074134470622018}
   m_Layer: 2
   m_Name: Ring (1)
   m_TagString: Untagged
@@ -86,23 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &274970507091011070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163883396264111822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1315172d7ad53634e952f7d8f3c02048, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollectibleType: 0
-  rotate: 1
-  rotationSpeed: 10
-  collectSound: {fileID: 0}
-  collectEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f, type: 3}
 --- !u!82 &243508136618064584
 AudioSource:
   m_ObjectHideFlags: 0
@@ -199,16 +182,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!135 &262536465859822796
-SphereCollider:
+--- !u!65 &9163597113470807921
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163883396264111822}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.41999996
-  m_Center: {x: 0, y: 0, z: 0.000000029802322}
+  m_Size: {x: 0.12000026, y: 0.58489823, z: 0.57928467}
+  m_Center: {x: 0, y: -0.0014016628, z: -0.0014038086}
+--- !u!114 &6732074134470622018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163883396264111822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a016e5c24cbfe4284292f2525970a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

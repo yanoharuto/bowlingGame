@@ -6,6 +6,10 @@ using UnityEngine;
 
 public class FlyShip : MonoBehaviour
 {
+    private 
+    /// <summary>
+    /// ˆÊ’u‚ð“`‚¦‚é
+    /// </summary>
     private void Start()
     {
         GameObjectPosition.AddDictionaryObject(gameObject);
