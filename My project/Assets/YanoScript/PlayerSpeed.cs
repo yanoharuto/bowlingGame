@@ -17,4 +17,7 @@ public class PlayerSpeed : ScriptableObject
     //Å‘å‘¬“x
     [SerializeField] private float setMaxSpeed;
     public float maxSpeed { get => setMaxSpeed;}
+    //Å‘å‘¬“x
+    [SerializeField] [Range(1.0f,100.0f)] private float setCorrectionRotate;
+    public float correctionRotate { get => setCorrectionRotate; }
 }

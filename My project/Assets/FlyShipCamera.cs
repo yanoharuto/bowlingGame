@@ -22,16 +22,16 @@ public class FlyShipCamera : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        //スティックを曲げてるか調べる
-        var stick = JoyconManager.Instance.j[0].GetStick();
-        var sX = stick[0];
-        //プレイヤーとの距離を更新
-        if (Mathf.Abs(sX) > 0.1f) 
-        {
-            var cross = Vector3.Cross(flyShipBetween.normalized, Vector3.up);
-            flyShipBetween += sX > 0 ? cross : -cross;
-        }
-        //プレイヤーの位置に合わせてカメラを回転と移動
+        ////スティックを曲げてるか調べる
+        //var stick = JoyconManager.Instance.j[0].GetStick();
+        //var sX = stick[0];
+        ////プレイヤーとの距離を更新
+        //if (Mathf.Abs(sX) > 0.1f) 
+        //{
+        //    var cross = Vector3.Cross(flyShipBetween.normalized, Vector3.up);
+        //    flyShipBetween += sX > 0 ? cross : -cross;
+        //}
+        ////プレイヤーの位置に合わせてカメラを回転と移動
         var playerPos = GameObjectPosition.GetDictionaryObjectPositon("Player");
         
         betweenSize = (playerPos - transform.position).magnitude;
