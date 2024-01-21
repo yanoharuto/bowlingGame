@@ -3,16 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Move : MonoBehaviour
 { 
-    //回転量
-    private Vector3 addRotate = Vector3.zero;
-    private Vector3 prevE = Vector3.zero;
-    //機体の修正
-    private bool isCorrectionRotate = false;
-    //ひとつ前のJoyconの傾き値
-    private Quaternion prevGyro = Quaternion.identity;
     //トリガーボタンを押したときのJoyconの傾き値
     private Quaternion holdStartJVec = Quaternion.identity;
     //トリガーボタンを押したならtrue
@@ -49,54 +43,33 @@ public class Move : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        var sValue = JoyconManager.Instance.j[0].GetStick();
-        var x = sValue[0];
-        var y = sValue[1];
-        addRotate = Vector3.zero;
-        if (Mathf.Abs(x) > 0.5f)
+        var isL = JoyconManager.Instance.j[0].isLeft;
+        var lCon = isL ? JoyconManager.Instance.j[0] : JoyconManager.Instance.j[1];
+        var rCon = isL ? JoyconManager.Instance.j[1] : JoyconManager.Instance.j[0];
+        //ジョイコンのスティックの値
+        var sValue = lCon.GetStick();
+        var horizon = sValue[0];
+        var vertical = sValue[1];
+        var addRotate = Vector3.zero;
+        
+        var isPushLShoulder1 = lCon.GetButton(Joycon.Button.SHOULDER_1);
+
+        if (Mathf.Abs(horizon) > 0.5f)
         {
-            addRotate.y = x > 0 ? setSpeed.rotaSpeed : -setSpeed.rotaSpeed;
+            addRotate.z = horizon > 0 ? -setSpeed.rotaSpeed : setSpeed.rotaSpeed;
         }
-        if (Mathf.Abs(y) > 0.5f)
+        if (Mathf.Abs(vertical) > 0.5f)
         {
-            addRotate.x = y > 0 ? setSpeed.rotaSpeed : -setSpeed.rotaSpeed;
+            addRotate.x = vertical > 0 ? setSpeed.rotaSpeed : -setSpeed.rotaSpeed;
+        }
+        if (isPushLShoulder1|| rCon.GetButton(Joycon.Button.SHOULDER_1))
+        {
+            addRotate.y = isPushLShoulder1 ? -setSpeed.rotaSpeed : setSpeed.rotaSpeed;
         }
         if (addRotate.magnitude > 0.1f)
         {
             transform.Rotate(addRotate);
         }
-        else
-        {
-            var dot = Vector3.Dot(transform.up, Vector3.up);
-            isCorrectionRotate = dot < 0.9999f;
-            if (isCorrectionRotate)
-            {
-                var targetE = -transform.eulerAngles.normalized * setSpeed.correctionRotate;
-                targetE.y = 0;
-                transform.Rotate(targetE);
-            }
-        }
-        //if (JoyconManager.Instance.j[0].GetButton(Joycon.Button.SHOULDER_2))
-        //{
-        //    var jVec = JoyconGyroManager.gyroValue;
-        //    if (hold)
-        //    {
-        //        var r = Vector3.Normalize(jVec.eulerAngles - holdStartJVec.eulerAngles);
-
-        //    }
-        //    //回転する
-        //    else
-        //    {
-        //        hold = true;
-        //        holdStartJVec = jVec;
-        //        prevGyro = jVec;
-        //        addRotate = Vector3.zero;
-        //    }
-        //}
-        //else
-        //{
-        //    hold = false;
-        //}
         var newVelocity = transform.forward * speed ;   
         rigidbody.velocity = newVelocity;
     }
