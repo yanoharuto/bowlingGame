@@ -17,10 +17,17 @@ public class RouteManager : MonoBehaviour
     // 座標差保存変数
     Vector3 preservation;
 
+    // リング取得数保持
+    int counter = 0;
+
+    // シーン切り替えのために取得
+    ScenesTransition m_ScenesTransition;
+
     // Start is called before the first frame update
     void Start()
     {
         preservation = Vector3.zero;
+        m_ScenesTransition = new ScenesTransition();
     }
 
     // Update is called once per frame
@@ -46,6 +53,17 @@ public class RouteManager : MonoBehaviour
                     Rings[i].SetActive(false);
                 }
             }
+            else
+            {
+                counter++;
+
+                if(counter == Rings.Length)
+                {
+                    m_ScenesTransition.ST_ChangeScenes("リザルト");
+                }
+            }
         }
+
+        counter = 0;
     }
 }
