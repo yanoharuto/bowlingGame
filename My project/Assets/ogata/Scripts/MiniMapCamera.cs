@@ -9,7 +9,7 @@ public class MiniMapCamera : MonoBehaviour
     private Vector3 offset;      //相対距離取得用
 
     // マップ用カメラのX軸の固定値
-    float mapCameraRotationX;
+    const float mapCameraRotationX = 90.0f;
 
 
     // Use this for initialization
@@ -17,9 +17,6 @@ public class MiniMapCamera : MonoBehaviour
     {
         // MainCamera(自分自身)とplayerとの相対距離を求める
         offset = transform.position - player.transform.position;
-
-        // カメラのx軸回転角度の取得
-        mapCameraRotationX = this.transform.position.x;
     }
 
     // Update is called once per frame
