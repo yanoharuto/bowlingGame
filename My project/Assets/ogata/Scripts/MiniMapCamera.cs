@@ -8,6 +8,9 @@ public class MiniMapCamera : MonoBehaviour
     [SerializeField] GameObject player;   //プレイヤー情報格納用
     private Vector3 offset;      //相対距離取得用
 
+    // マップ用カメラのX軸の固定値
+    const float mapCameraRotationX = 90.0f;
+
 
     // Use this for initialization
     void Start()
@@ -22,6 +25,12 @@ public class MiniMapCamera : MonoBehaviour
 
         //新しいトランスフォームの値を代入する
         transform.position = player.transform.position + offset;
+
+        // プレイヤーのY軸の回転度を取得
+        float playerRotationY = player.transform.eulerAngles.y;
+        // プレイヤーの回転方向を代入。
+        transform.localEulerAngles 
+            = new Vector3(mapCameraRotationX, playerRotationY, 0.0f);
 
     }
 }
