@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727b17e35b8d8a8478b254cd5307a404, type: 3}
+  m_Name: AnyButton
+  m_EditorClassIdentifier: 
+  setNowFase: 0
+  setObjList:
+  - {fileID: 5131353186443812866, guid: d665a7dec1a26ba44bf43114d33b9be1, type: 3}
+  setItemList:
+  - {fileID: 11400000, guid: 92755b000f32f03458b1c45c4d5d6058, type: 2}
