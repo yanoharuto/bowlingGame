@@ -3675,8 +3675,8 @@ MonoBehaviour:
   - {fileID: 855171486}
   - {fileID: 854848011}
   - {fileID: 1866567977}
-  betweenMin: {x: -3, y: -3, z: -3}
-  betweenMax: {x: 3, y: 3, z: 3}
+  betweenMin: {x: -10, y: -7, z: -5}
+  betweenMax: {x: 10, y: 7, z: -5}
 --- !u!1 &1818815780
 GameObject:
   m_ObjectHideFlags: 0
