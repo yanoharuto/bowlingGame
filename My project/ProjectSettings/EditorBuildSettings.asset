@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TitleScene.unity
-    guid: c76b3035621c78b4f8376498efe10757
-  - enabled: 1
     path: Assets/Scenes/FlightGameScene_Easy.unity
     guid: 5e485e906b8c484418785cbb9d051954
   - enabled: 1
