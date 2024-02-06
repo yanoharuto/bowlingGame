@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: button
   m_EditorClassIdentifier: 
   setCursorPos: {x: 0, y: 0}
-  setNextFase: 0
+  setNextFase: 1
   setNextSceneName: 
-  isLoadScene: 0
+  setIsLoadScene: 0
+  setIsNotCursor: 1
+  setNextKeyButton: 4

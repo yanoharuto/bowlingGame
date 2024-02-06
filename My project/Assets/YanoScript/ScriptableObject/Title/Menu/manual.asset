@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44f45e8604139a45af028205f4b57a8, type: 3}
   m_Name: manual
   m_EditorClassIdentifier: 
-  setCursorPos: {x: 0, y: 0}
-  setNextFase: 0
+  setCursorPos: {x: 360, y: -140}
+  setNextFase: 4
   setNextSceneName: 
+  setIsLoadScene: 0
+  setIsNotCursor: 1
+  setNextKeyButton: 1

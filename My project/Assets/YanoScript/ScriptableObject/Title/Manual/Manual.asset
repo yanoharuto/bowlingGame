@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Manual
   m_EditorClassIdentifier: 
   setNowFase: 4
-  setObjList: []
-  setItemList: []
+  setItemList:
+  - {fileID: 11400000, guid: a2abd22964dfd5c4a91dc1a880d88700, type: 2}

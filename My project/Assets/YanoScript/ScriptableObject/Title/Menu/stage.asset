@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44f45e8604139a45af028205f4b57a8, type: 3}
   m_Name: stage
   m_EditorClassIdentifier: 
-  setCursorPos: {x: 0, y: 0}
+  setCursorPos: {x: 360, y: -60}
   setNextFase: 2
-  setNextSceneName: 
-  isLoadScene: 1
+  setNextSceneName: FlightGameScene_Easy
+  setIsLoadScene: 1
+  setIsNotCursor: 0
+  setNextKeyButton: 1

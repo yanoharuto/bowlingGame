@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
+using static UnityEditor.Progress;
 /// <summary>
 /// タイトルの工程管理
 /// </summary>
 public class TitleFaseManager : MonoBehaviour
 {
-    //入力
-    private JoyconInput input;
     //工程のリスト
     [SerializeField] List<TitleFase> faseList;
     //タイトルのカーソル
@@ -24,38 +24,62 @@ public class TitleFaseManager : MonoBehaviour
         manual//操作方法
     }
     
+    //今の工程で必要なもの纏め
     private TitleFase nowFaseObj;
-    [SerializeField] private Fase nowFase = Fase.anyButton;
+    static public Fase nowFase { get; private set; } = Fase.anyButton;
     /// <summary>
     /// 入力クラスの所得 カーソルの初期化
     /// </summary>
     void Start()
     {
-        input = new JoyconInput();
         nowFaseObj = faseList[0];
         cursor.SetItemList(nowFaseObj.itemList);
+        nowFase = nowFaseObj.nowFase;
     }
     /// <summary>
     /// 入力があったら更新
     /// </summary>
     void Update()
     {
-        //決定ボタンを押したならフェーズの更新
-        if (input.rJ.GetButton(Joycon.Button.DPAD_LEFT))
+        var item = cursor.GetTitleItem();
+        var isNextFase = false;
+        switch (item.keyButton) //カーソルが指しているアイテムが反応するボタンを押したとき
         {
-            foreach (var fase in faseList)
+            case JoyconInput.NextFaseKeyButton.Up:
+                isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_UP)==JoyconInput.InputFase.push;
+                break;
+            case JoyconInput.NextFaseKeyButton.Right:
+                isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_RIGHT) == JoyconInput.InputFase.push;
+                break;
+            case JoyconInput.NextFaseKeyButton.Down: 
+                isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_DOWN) == JoyconInput.InputFase.push;
+                break;
+            case JoyconInput.NextFaseKeyButton.Left:
+                isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_LEFT) == JoyconInput.InputFase.push;
+                break;
+            case JoyconInput.NextFaseKeyButton.Any:
+                isNextFase = JoyconInput.IsPressAnyButton(JoyconInput.InputFase.push);
+                break;
+        }
+        //次の項目に行く
+        if (isNextFase)
+        {
+            if (item.isLoadScene)//ロード
             {
-                if (nowFase == fase.nowFase)
+                SceneManager.LoadScene(item.nextScene);
+            }
+            else
+            {
+                //次のフェーズを所得
+                foreach (TitleFase fase in faseList)
                 {
-                    UpdateFase(fase);
-                    break;
+                    if (item.nextFase == fase.nowFase)
+                    {
+                        UpdateFase(fase);
+                        break;
+                    }
                 }
             }
-        }
-        //キャンセルボタンを押したならメニュー画面に戻る
-        if(input.rJ.GetButton(Joycon.Button.DPAD_DOWN))
-        {
-            nowFase = Fase.menu;
         }
     }
     /// <summary>
@@ -63,24 +87,10 @@ public class TitleFaseManager : MonoBehaviour
     /// </summary>
     void UpdateFase(TitleFase nextFaseObj)
     {
-        //カーソルの更新
-        cursor.SetItemList(nextFaseObj.itemList);
-        //項目を見えなくしたり消したりする
-        if (nowFaseObj.objList.Count > 0)
-        {
-            foreach (var obj in nowFaseObj.objList)
-            {
-                obj.SetActive(false);
-            }
-        }
-        if (nextFaseObj.objList.Count > 0)
-        {
-            foreach (var obj in nextFaseObj.objList)
-            {
-                obj.SetActive(true);
-            }
-        }
         //次の項目の更新
         nowFaseObj = nextFaseObj;
+        nowFase = nowFaseObj.nowFase;
+        //カーソルの更新
+        cursor.SetItemList(nextFaseObj.itemList);
     }
 }
