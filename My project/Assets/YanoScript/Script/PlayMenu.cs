@@ -4,5 +4,20 @@ using UnityEngine;
 
 public class PlayMenu : MonoBehaviour
 {
-
+    private float tScale = 0;
+    private void Start()
+    {
+        tScale = Time.timeScale;
+    }
+    private void Update()
+    {
+        if(PlayFaseManager.nowFase == PlayFaseManager.Fase.menu)
+        { 
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = tScale;
+        }
+    }
 }

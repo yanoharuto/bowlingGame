@@ -24,12 +24,21 @@ public class FlyShip : MonoBehaviour
     {
         GameObjectPosition.AddDictionaryObject(gameObject);
     }
+    private void Update()
+    {
+        move.enabled = PlayFaseManager.nowFase == PlayFaseManager.Fase.playFlight;
+        var rBody = GetComponent<Rigidbody>();
+        rBody.isKinematic = !move.enabled;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag== "Obstacle")
         {
             isAlive = false;
             move.enabled= false;
+            var rBody=GetComponent<Rigidbody>();
+            rBody.isKinematic = true;
+            rBody.velocity= Vector3.zero;
         }
     }
 }

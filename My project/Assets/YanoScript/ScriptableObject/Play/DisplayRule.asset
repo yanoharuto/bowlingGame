@@ -15,5 +15,5 @@ MonoBehaviour:
   setFase: 0
   setItems:
   - {fileID: 11400000, guid: 3d88d4b0b25199b41bcb5f8cbeee2536, type: 2}
-  - {fileID: 11400000, guid: 20783ac630fc3c049bb79389c4cde4b0, type: 2}
+  - {fileID: 11400000, guid: 7daab424eb385754782b08157a87e3ef, type: 2}
   setIsHorizon: 0
