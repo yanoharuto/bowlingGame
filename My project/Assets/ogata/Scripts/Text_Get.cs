@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class Text_Get : MonoBehaviour
 {
     ScoreManager tg_ScoreManager;
 
     [Header("シーン名を表示するテキスト")]
-    [SerializeField] TextMeshProUGUI sceneName;
+    [SerializeField] Text sceneName;
     [Header("クリアタイムを表示するテキスト")]
-    [SerializeField] TextMeshProUGUI clearTimeValue;
+    [SerializeField] Text clearTimeValue;
     [Header("最高クリアタイムを表示するテキスト")]
-    [SerializeField] TextMeshProUGUI bestClearTimeValue;
+    [SerializeField] Text bestClearTimeValue;
+    [Header("タイム更新時に表示するテキスト")]
+    [SerializeField] GameObject newRecode;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,11 @@ public class Text_Get : MonoBehaviour
         sceneName.text = tg_ScoreManager.SM_getSceneName();
         clearTimeValue.text = tg_ScoreManager.SM_getCurrentScore().ToString();
         bestClearTimeValue.text = tg_ScoreManager.SM_getBestScore().ToString();
+
+        if(tg_ScoreManager.getset_newRecodeFlag == true)
+        {
+            newRecode.active = true;
+        }
     }
 
 }

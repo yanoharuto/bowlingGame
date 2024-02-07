@@ -15,8 +15,13 @@ public class ScoreManager : MonoBehaviour
         { "Hard",           "FlightGameScene_Hard" },
     };
 
+    // 新しい記録が出たか
+    bool newRecode = false;
+
+
     void Update()
     {
+        // 時間計測
         elapsedTime += Time.time;
     }
 
@@ -56,39 +61,46 @@ public class ScoreManager : MonoBehaviour
         // 新状態によって遷移
         if (SM_Scenes["Easy"] == SceneManager.GetActiveScene().name)
         {
-            // スコア更新処理
-            if(PlayerPrefs.GetFloat("Score") > PlayerPrefs.GetFloat("BestScore_Easy") ||
-                !PlayerPrefs.HasKey("BestScore_Easy"))
-            {
-                PlayerPrefs.SetFloat("BestScore_Easy", PlayerPrefs.GetFloat("Score"));
-                PlayerPrefs.Save();
-            }
+            score_Update(SM_Scenes["Easy"]);
 
-            return PlayerPrefs.GetFloat("BestScore_Easy");
+            return PlayerPrefs.GetFloat(SM_Scenes["Easy"]);
         }
         else if(SM_Scenes["Standard"] == SceneManager.GetActiveScene().name)
         {
-            // スコア更新処理
-            if (PlayerPrefs.GetFloat("Score") > PlayerPrefs.GetFloat("BestScore_Standard") ||
-                !PlayerPrefs.HasKey("BestScore_Standard"))
-            {
-                PlayerPrefs.SetFloat("BestScore_Standard", PlayerPrefs.GetFloat("Score"));
-                PlayerPrefs.Save();
-            }
+            score_Update(SM_Scenes["Standard"]);
 
-            return PlayerPrefs.GetFloat("BestScore_Standard");
+            return PlayerPrefs.GetFloat(SM_Scenes["Standard"]);
         }
         else
         {
-            // スコア更新処理
-            if (PlayerPrefs.GetFloat("Score") < PlayerPrefs.GetFloat("BestScore_Hard") ||
-                !PlayerPrefs.HasKey("BestScore_Hard"))
-            {
-                PlayerPrefs.SetFloat("BestScore_Hard", PlayerPrefs.GetFloat("Score"));
-                PlayerPrefs.Save();
-            }
+            score_Update(SM_Scenes["Hard"]);
 
-            return PlayerPrefs.GetFloat("BestScore_Hard");
+            return PlayerPrefs.GetFloat(SM_Scenes["Hard"]);
         }
+    }
+
+    /// <summary>
+    /// スコア更新処理関数
+    /// </summary>
+    /// <param name="sceneName">プレイしたシーン名</param>
+    void score_Update(string sceneName)
+    {
+        if (PlayerPrefs.GetFloat("Score") < PlayerPrefs.GetFloat(sceneName) ||
+            !PlayerPrefs.HasKey(sceneName))
+        {
+            newRecode = true;
+
+            PlayerPrefs.SetFloat(sceneName, PlayerPrefs.GetFloat("Score"));
+            PlayerPrefs.Save();
+        }
+    }
+
+    /// <summary>
+    /// new recodeの時にフラグが立つ
+    /// </summary>
+    public bool getset_newRecodeFlag
+    {
+        get { return newRecode; }
+        set { newRecode = false; }
     }
 }
