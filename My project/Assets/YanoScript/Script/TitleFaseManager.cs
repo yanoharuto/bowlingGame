@@ -14,6 +14,8 @@ public class TitleFaseManager : MonoBehaviour
     [SerializeField] List<TitleFase> faseList;
     //タイトルのカーソル
     [SerializeField] TitleCursor cursor;
+    [SerializeField] FadeAndLoader fade;
+    bool isLoadScene;
     //工程の種類
     public enum Fase
     {
@@ -41,42 +43,46 @@ public class TitleFaseManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        var item = cursor.GetTitleItem();
-        var isNextFase = false;
-        switch (item.keyButton) //カーソルが指しているアイテムが反応するボタンを押したとき
+        if (!isLoadScene)
         {
-            case JoyconInput.NextFaseKeyButton.Up:
-                isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_UP)==JoyconInput.InputFase.push;
-                break;
-            case JoyconInput.NextFaseKeyButton.Right:
-                isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_RIGHT) == JoyconInput.InputFase.push;
-                break;
-            case JoyconInput.NextFaseKeyButton.Down: 
-                isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_DOWN) == JoyconInput.InputFase.push;
-                break;
-            case JoyconInput.NextFaseKeyButton.Left:
-                isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_LEFT) == JoyconInput.InputFase.push;
-                break;
-            case JoyconInput.NextFaseKeyButton.Any:
-                isNextFase = JoyconInput.IsPressAnyButton(JoyconInput.InputFase.push);
-                break;
-        }
-        //次の項目に行く
-        if (isNextFase)
-        {
-            if (item.isLoadScene)//ロード
+            var item = cursor.GetTitleItem();
+            var isNextFase = false;
+            switch (item.keyButton) //カーソルが指しているアイテムが反応するボタンを押したとき
             {
-                SceneManager.LoadScene(item.nextScene);
+                case JoyconInput.NextFaseKeyButton.Up:
+                    isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_UP) == JoyconInput.InputFase.push;
+                    break;
+                case JoyconInput.NextFaseKeyButton.Right:
+                    isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_RIGHT) == JoyconInput.InputFase.push;
+                    break;
+                case JoyconInput.NextFaseKeyButton.Down:
+                    isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_DOWN) == JoyconInput.InputFase.push;
+                    break;
+                case JoyconInput.NextFaseKeyButton.Left:
+                    isNextFase = JoyconInput.GetRButtonFase(Joycon.Button.DPAD_LEFT) == JoyconInput.InputFase.push;
+                    break;
+                case JoyconInput.NextFaseKeyButton.Any:
+                    isNextFase = JoyconInput.IsPressAnyButton(JoyconInput.InputFase.push);
+                    break;
             }
-            else
+            //次の項目に行く
+            if (isNextFase)
             {
-                //次のフェーズを所得
-                foreach (TitleFase fase in faseList)
+                if (item.isLoadScene)//ロード
                 {
-                    if (item.nextFase == fase.nowFase)
+                    StartCoroutine(fade.FadeOutAndLoad(item.nextScene, 1f));
+                    isLoadScene = true;
+                }
+                else
+                {
+                    //次のフェーズを所得
+                    foreach (TitleFase fase in faseList)
                     {
-                        UpdateFase(fase);
-                        break;
+                        if (item.nextFase == fase.nowFase)
+                        {
+                            UpdateFase(fase);
+                            break;
+                        }
                     }
                 }
             }
@@ -93,4 +99,5 @@ public class TitleFaseManager : MonoBehaviour
         //カーソルの更新
         cursor.SetItemList(nextFaseObj.itemList);
     }
+
 }

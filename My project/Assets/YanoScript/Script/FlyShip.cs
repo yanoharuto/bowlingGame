@@ -8,6 +8,15 @@ using UnityEngine;
 /// </summary>
 public class FlyShip : MonoBehaviour
 {
+    [SerializeField] Move move;
+    enum GameFase
+    {
+        start,
+        play,
+        end,
+    }
+    public bool isAlive { get; private set; } = true;
+    
     /// <summary>
     /// ˆÊ’u‚ð“`‚¦‚é
     /// </summary>
@@ -15,5 +24,12 @@ public class FlyShip : MonoBehaviour
     {
         GameObjectPosition.AddDictionaryObject(gameObject);
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag== "Obstacle")
+        {
+            isAlive = false;
+            move.enabled= false;
+        }
+    }
 }

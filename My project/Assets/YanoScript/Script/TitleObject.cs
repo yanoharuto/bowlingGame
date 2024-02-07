@@ -8,7 +8,8 @@ public class TitleObject : MonoBehaviour
 {
     [SerializeField][Header("表示するタイミング")] TitleFaseManager.Fase upperFase;
 
-    [SerializeField] [Header("表示されたり消えたりするもの")]List<GameObject> objList=new List<GameObject>();
+    [SerializeField][Header("表示されたり消えたりするもの")] List<GameObject> objList = new List<GameObject>();
+
     private void Update()
     {
         if (objList.Count > 0)

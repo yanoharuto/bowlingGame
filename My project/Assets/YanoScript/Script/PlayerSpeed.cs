@@ -8,16 +8,31 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Create/PlayerSpeed",fileName ="playerSpeed")]
 public class PlayerSpeed : ScriptableObject
 {
-    //‰ñ“]‘¬“x
-    [SerializeField] private float setRotaSpeed;
-    public float rotaSpeed { get => setRotaSpeed; }
+    [SerializeField][Header("ŠeŽ²‚Ì‰ñ“]‘¬“x")] private Vector3 setRotaSpeed;
+    //ŠeŽ²‚Ì‰ñ“]‘¬“x
+    public Vector3 rotaSpeed { get => setRotaSpeed; }
+    [SerializeField][Header("ŠeŽ²‚Ì‰ñ“]Œ¸‘¬—Ê")] private float setDeccelSpeed;
+    //ŠeŽ²‚Ì‰ñ“]Œ¸‘¬—Ê
+    public float rotaDeccelSpeed { get => setDeccelSpeed; }
+    [SerializeField][Header("ŠeŽ²‚Ì‰ñ“]‰Á‘¬‘¬“x")] private float setRotaAccelSpeed;
+    //ŠeŽ²‚Ì‰ñ“]‰Á‘¬‘¬“x
+    public float rotaAccelSpeed { get => setRotaAccelSpeed; }
+    [SerializeField][Header("ŠeŽ²‚Ì‰ñ“]Å‘å‘¬“x")] private float setRotaMaxSpeed;
+    //ŠeŽ²‚Ì‰ñ“]Å‘å‘¬“x
+    public float rotaMaxSpeed { get => setRotaMaxSpeed; }
+    [SerializeField][Header("Œ¸‘¬")] private float setDecelSpeed;
+    //Œ¸‘¬—Ê
+    public float decelSpeed { get => setDecelSpeed; }
+    [SerializeField][Header("A“ü—Í’†‚Ì‰Á‘¬”{—¦")][Range(1.0f,5.0f)] private float setBoostRatio;
+    public float boostRaito { get => setBoostRatio; }
+    [SerializeField][Header("‰Á‘¬—Ê")] private float setAccelSpeed;
     //‰Á‘¬—Ê
-    [SerializeField] private float setAccelSpeed;
     public float accelSpeed { get => setAccelSpeed; }
+    [SerializeField][Header("Å‘å‘¬“x")] private float setMaxSpeed;
     //Å‘å‘¬“x
-    [SerializeField] private float setMaxSpeed;
     public float maxSpeed { get => setMaxSpeed;}
-    //Å‘å‘¬“x
-    [SerializeField] [Range(1.0f,100.0f)] private float setCorrectionRotate;
-    public float correctionRotate { get => setCorrectionRotate; }
+
+    [SerializeField][Header("Å’á‘¬“x")] private float setMinSpeed;
+    //Å’á‘¬“x
+    public float minSpeed { get => setMinSpeed; }
 }

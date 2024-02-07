@@ -31,7 +31,8 @@ public class JoyconInput :MonoBehaviour
         Right,
         Down,
         Left,
-        Any
+        Any,
+        Plus
     }
     /// <summary>
     /// 入力段階を所得
@@ -50,6 +51,23 @@ public class JoyconInput :MonoBehaviour
     public static InputFase GetLButtonFase(Joycon.Button bType)
     {
         return lButtons[bType];
+    }
+    public static bool IsPressNextKey(NextFaseKeyButton faseKey)
+    {
+        switch (faseKey) //カーソルが指しているアイテムが反応するボタンを押したとき
+        {
+            case JoyconInput.NextFaseKeyButton.Up:
+                return JoyconInput.GetRButtonFase(Joycon.Button.DPAD_UP) == JoyconInput.InputFase.push;
+            case JoyconInput.NextFaseKeyButton.Right:
+                return JoyconInput.GetRButtonFase(Joycon.Button.DPAD_RIGHT) == JoyconInput.InputFase.push;
+            case JoyconInput.NextFaseKeyButton.Down:
+                return JoyconInput.GetRButtonFase(Joycon.Button.DPAD_DOWN) == JoyconInput.InputFase.push;
+            case JoyconInput.NextFaseKeyButton.Left:
+                return JoyconInput.GetRButtonFase(Joycon.Button.DPAD_LEFT) == JoyconInput.InputFase.push;
+            case JoyconInput.NextFaseKeyButton.Any:
+                return JoyconInput.IsPressAnyButton(JoyconInput.InputFase.push);
+        }
+        return false;
     }
     public static bool IsPressAnyButton(InputFase fase)
     {
@@ -86,22 +104,33 @@ public class JoyconInput :MonoBehaviour
         rButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
         rButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
         rButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
+        rButtons.Add(Joycon.Button.PLUS, InputFase.free);
         lButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
         lButtons.Add(Joycon.Button.DPAD_UP , InputFase.free);
         lButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
         lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
     }
+    /// <summary>
+    /// 
+    /// </summary>
     private void Update()
     {
         UpdateButton(rButtons,rJ,Joycon.Button.DPAD_DOWN);
         UpdateButton(rButtons,rJ,Joycon.Button.DPAD_LEFT);
         UpdateButton(rButtons,rJ,Joycon.Button.DPAD_UP);
         UpdateButton(rButtons,rJ,Joycon.Button.DPAD_RIGHT);
+        UpdateButton(rButtons,rJ,Joycon.Button.PLUS);
         UpdateButton(lButtons, lJ, Joycon.Button.DPAD_DOWN);
         UpdateButton(lButtons, lJ, Joycon.Button.DPAD_LEFT);
         UpdateButton(lButtons, lJ, Joycon.Button.DPAD_UP);
         UpdateButton(lButtons, lJ, Joycon.Button.DPAD_RIGHT);
     }
+    /// <summary>
+    /// 入力状況更新
+    /// </summary>
+    /// <param name="buttons">更新したいボタン</param>
+    /// <param name="j">押してあるか調べるために必要なジョイコン</param>
+    /// <param name="bType">ボタンの種類</param>
     private void UpdateButton(Dictionary<Joycon.Button,InputFase> buttons,Joycon j,Joycon.Button bType)
     {
         if(j.GetButton(bType))

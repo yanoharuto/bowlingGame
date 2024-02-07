@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
-
+/// <summary>
+/// 移動用
+/// </summary>
 public class Move : MonoBehaviour
 { 
     //トリガーボタンを押したときのJoyconの傾き値
@@ -12,30 +14,49 @@ public class Move : MonoBehaviour
     //トリガーボタンを押したならtrue
     private bool hold = false;
     /// 移動速度をリジッドボディに反映
-    private Rigidbody rigidbody;
+    private Rigidbody rBody;
     /// プレイヤーの各種速さ
     [SerializeField] private PlayerSpeed setSpeed;
     /// だんだん加速したり減速したりする
     private float speed;
-    
+    private float rotaSpeedX;
+    private float rotaSpeedY;
+    private float rotaSpeedZ;
     /// <summary>
     /// リジッドボディ所得
     /// </summary>
     private void Start()
     {
-        rigidbody = gameObject.AddComponent<Rigidbody>();
-        speed = 0;
-
+        rBody = gameObject.AddComponent<Rigidbody>();
+        speed = setSpeed.minSpeed;
     }
     /// <summary>
     /// 速さの更新
     /// </summary>
     void Update()
     {
-        speed += setSpeed.accelSpeed * Time.deltaTime;
-        if (speed > setSpeed.maxSpeed) 
+        if (JoyconInput.GetRButtonFase(Joycon.Button.DPAD_DOWN) == JoyconInput.InputFase.hold)
         {
-            speed = setSpeed.maxSpeed;
+            speed -= setSpeed.decelSpeed * Time.deltaTime;
+            if(speed<setSpeed.minSpeed)
+            {
+                speed = setSpeed.minSpeed;
+            }
+        }
+        else
+        {
+            if (JoyconInput.GetRButtonFase(Joycon.Button.DPAD_RIGHT) == JoyconInput.InputFase.hold)
+            {
+                speed += setSpeed.accelSpeed * setSpeed.boostRaito * Time.deltaTime;
+            }
+            else
+            {
+                speed += setSpeed.accelSpeed * Time.deltaTime;
+            }
+            if (speed > setSpeed.maxSpeed)
+            {
+                speed = setSpeed.maxSpeed;
+            }
         }
     }
     /// <summary>
@@ -43,34 +64,54 @@ public class Move : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        var isL = JoyconManager.Instance.j[0].isLeft;
-        var lCon = isL ? JoyconManager.Instance.j[0] : JoyconManager.Instance.j[1];
-        var rCon = isL ? JoyconManager.Instance.j[1] : JoyconManager.Instance.j[0];
         //ジョイコンのスティックの値
-        var sValue = lCon.GetStick();
+        var sValue = JoyconInput.lJ.GetStick();
         var horizon = sValue[0];
         var vertical = sValue[1];
         var addRotate = Vector3.zero;
-        
-        var isPushLShoulder1 = lCon.GetButton(Joycon.Button.SHOULDER_1);
-
+       
         if (Mathf.Abs(horizon) > 0.5f)
         {
-            addRotate.z = horizon > 0 ? -setSpeed.rotaSpeed : setSpeed.rotaSpeed;
+            addRotate.z = (horizon > 0 ? -setSpeed.rotaSpeed.z : setSpeed.rotaSpeed.z) * rotaSpeedZ;
+            rotaSpeedZ += setSpeed.rotaAccelSpeed * Time.deltaTime;
+            rotaSpeedZ = rotaSpeedZ > setSpeed.rotaMaxSpeed ? setSpeed.rotaMaxSpeed : rotaSpeedZ;
+        }
+        else if(rotaSpeedZ > 0)
+        {
+            rotaSpeedZ = Mathf.Lerp(rotaSpeedZ, 0, setSpeed.rotaDeccelSpeed);
         }
         if (Mathf.Abs(vertical) > 0.5f)
         {
-            addRotate.x = vertical > 0 ? setSpeed.rotaSpeed : -setSpeed.rotaSpeed;
+            addRotate.x = (vertical > 0 ? setSpeed.rotaSpeed.x : -setSpeed.rotaSpeed.x) * rotaSpeedX;
+            rotaSpeedX += setSpeed.rotaAccelSpeed * Time.deltaTime;
+            rotaSpeedX = rotaSpeedX > setSpeed.rotaMaxSpeed ? setSpeed.rotaMaxSpeed : rotaSpeedX;
         }
-        if (isPushLShoulder1|| rCon.GetButton(Joycon.Button.SHOULDER_1))
+        else if(rotaSpeedX > 0)
         {
-            addRotate.y = isPushLShoulder1 ? -setSpeed.rotaSpeed : setSpeed.rotaSpeed;
+            rotaSpeedX = Mathf.Lerp(rotaSpeedX, 0, setSpeed.rotaDeccelSpeed);
+        }
+        if (JoyconInput.lJ.GetButton(Joycon.Button.SHOULDER_1)) 
+        {
+            addRotate.y = -setSpeed.rotaSpeed.y * rotaSpeedY ;
+            rotaSpeedY += setSpeed.rotaAccelSpeed * Time.deltaTime;
+            rotaSpeedY = rotaSpeedY > setSpeed.rotaMaxSpeed ? setSpeed.rotaMaxSpeed : rotaSpeedY;
+        }
+        else if( JoyconInput.rJ.GetButton(Joycon.Button.SHOULDER_1))
+        {
+            addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY ;
+            rotaSpeedY += setSpeed.rotaAccelSpeed * Time.deltaTime;
+            rotaSpeedY = rotaSpeedY > setSpeed.rotaMaxSpeed ? setSpeed.rotaMaxSpeed : rotaSpeedY;
+        }
+        else if(rotaSpeedY > 0)
+        {
+            rotaSpeedY = Mathf.Lerp(rotaSpeedY,0,setSpeed.rotaDeccelSpeed);
         }
         if (addRotate.magnitude > 0.1f)
         {
             transform.Rotate(addRotate);
         }
+        
         var newVelocity = transform.forward * speed ;   
-        rigidbody.velocity = newVelocity;
+        rBody.velocity = newVelocity;
     }
 }
