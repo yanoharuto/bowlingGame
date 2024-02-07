@@ -142,3 +142,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae26f11d3a01974ab5e3f8cad584e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  move: {fileID: 0}
+--- !u!1 &4011878805137919319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1099048681204852, guid: 7049a336c6ee74a32984d27e6d9faeca, type: 3}
+  m_PrefabInstance: {fileID: 4012400574037352739}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &8746843497275362606
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4011878805137919319}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.7663954
+  m_Height: 5.691621
+  m_Direction: 2
+  m_Center: {x: 0.036697745, y: 0.20486689, z: 0.28177977}

@@ -17,7 +17,7 @@ public class CountDown : MonoBehaviour
             time += Time.deltaTime;
             if (time > 5) 
             {
-                isEndCountDown= true;
+                isEndCountDown = true;
                 countText.text = texts.end;
             }
             else if(time > 4)

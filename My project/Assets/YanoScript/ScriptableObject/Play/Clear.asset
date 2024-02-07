@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Clear
   m_EditorClassIdentifier: 
   setFase: 0
-  setItems: []
+  setItems:
+  - {fileID: 0}
+  setIsHorizon: 0

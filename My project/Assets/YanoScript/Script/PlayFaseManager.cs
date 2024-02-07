@@ -26,12 +26,14 @@ public class PlayFaseManager : MonoBehaviour
     [SerializeField] PlayMenu menu;
     [SerializeField] PlayItemManager pIManager;
     [SerializeField] FadeAndLoader fadeLoad;
+    [SerializeField] GameOverProcessor gameOverProccesor;
     private void Start()
     {
         pIManager.SetItems(displayRule.items,displayRule.isHorizon);
     }
     private void Update()
     {
+        var tempFase = nowFase;
         if (pIManager.isNextFase)
         {
             if(pIManager.isLoad)//ロード
@@ -43,36 +45,46 @@ public class PlayFaseManager : MonoBehaviour
                 }
                 StartCoroutine(fadeLoad.FadeOutAndLoad(loadName));
             }
-
-            //カウントダウン終了
-            if (nowFase == Fase.countDown && countProccesor.isEndCountDown) 
+            //ゲームオーバー
+            if(!gameOverProccesor.isFlyShipAlive)
             {
-                nowFase = Fase.playFlight;
+                nowFase = Fase.gameOver;
+            }
+            //カウントダウン終了
+            else if (nowFase == Fase.countDown) 
+            {
+                if (countProccesor.isEndCountDown)
+                {
+                    nowFase = Fase.playFlight;
+                }
             }
             else
             {
                 nowFase = pIManager.GetNextFase();
             }
-            //分岐
-            switch (nowFase)
+            if (nowFase == tempFase)
             {
-                case Fase.displayRule:
-                    Debug.Log("なんかおかしい");
-                    break;
-                case Fase.countDown:
-                    pIManager.SetItems(count.items,count.isHorizon);
-                    break;
-                case Fase.playFlight:
-                    pIManager.SetItems(playFlight.items,playFlight.isHorizon);
-                    break;
-                case Fase.gameOver:
-                    pIManager.SetItems(gameOver.items,gameOver.isHorizon);
-                    break;
-                case Fase.clear:
-                    pIManager.SetItems(clear.items,clear.isHorizon);
-                    break;
-                default:
-                    break;
+                //分岐
+                switch (nowFase)
+                {
+                    case Fase.displayRule:
+                        Debug.Log("なんかおかしい");
+                        break;
+                    case Fase.countDown:
+                        pIManager.SetItems(count.items, count.isHorizon);
+                        break;
+                    case Fase.playFlight:
+                        pIManager.SetItems(playFlight.items, playFlight.isHorizon);
+                        break;
+                    case Fase.gameOver:
+                        pIManager.SetItems(gameOver.items, gameOver.isHorizon);
+                        break;
+                    case Fase.clear:
+                        pIManager.SetItems(clear.items, clear.isHorizon);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
