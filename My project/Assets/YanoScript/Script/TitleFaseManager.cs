@@ -70,7 +70,7 @@ public class TitleFaseManager : MonoBehaviour
             {
                 if (item.isLoadScene)//ÉçÅ[Éh
                 {
-                    StartCoroutine(fade.FadeOutAndLoad(item.nextScene, 1f));
+                    fade.FadeInAndLoad(item.nextScene, 1f);
                     isLoadScene = true;
                 }
                 else

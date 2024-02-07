@@ -27,12 +27,16 @@ using UnityEngine.Assertions;
 public class Fade : MonoBehaviour
 {
 	IFade fade;
-
+	[SerializeField] bool isStart = false;
 	void Start ()
 	{
 		Init ();
+		if (isStart)
+		{
+			cutoutRange = 1;
+		}
 		fade.Range = cutoutRange;
-	}
+    }
 
 	float cutoutRange;
 

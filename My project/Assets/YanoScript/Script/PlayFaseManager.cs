@@ -28,16 +28,18 @@ public class PlayFaseManager : MonoBehaviour
     [SerializeField] FadeAndLoader fadeLoad;
     [SerializeField] GameOverProcessor gameOverProccesor;
     [SerializeField] RouteManager rManager;
+    [SerializeField] Fade fade;
     private void Start()
     {
         pIManager.SetItems(displayRule.items,displayRule.isHorizon);
+        fade.FadeOut(1f);
     }
     private void Update()
     {
         var tempFase = nowFase;
         if(rManager.isGetRingPerfect)
         {
-            StartCoroutine(fadeLoad.FadeOutAndLoad("ResultScene")) ;
+            fadeLoad.FadeInAndLoad("ResultScene");
         }
         //ゲームオーバー
         if (!gameOverProccesor.isFlyShipAlive)
@@ -61,7 +63,7 @@ public class PlayFaseManager : MonoBehaviour
                 {
                     loadName = pIManager.GetNextLoadStageName();
                 }
-                StartCoroutine(fadeLoad.FadeOutAndLoad(loadName));
+                fadeLoad.FadeInAndLoad(loadName);
             }   
             else
             {

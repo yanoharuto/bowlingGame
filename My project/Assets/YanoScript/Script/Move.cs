@@ -96,7 +96,7 @@ public class Move : MonoBehaviour
         if (Mathf.Abs(vertical) > 0.5f)
         {
             addRotate.x = setSpeed.rotaSpeed.x * rotaSpeedX;
-            rotaSpeedX += (vertical > 0 ? -setSpeed.rotaAccelSpeed : setSpeed.rotaAccelSpeed) * Time.deltaTime;
+            rotaSpeedX += (vertical > 0 ? setSpeed.rotaAccelSpeed : -setSpeed.rotaAccelSpeed) * Time.deltaTime;
             rotaSpeedX = Mathf.Abs(rotaSpeedX) > setSpeed.rotaMaxSpeed ? (rotaSpeedZ > 0 ? 1 : -1) * setSpeed.rotaMaxSpeed : rotaSpeedX;
         }
         else if(Mathf.Abs(rotaSpeedX) > 0.0001f)

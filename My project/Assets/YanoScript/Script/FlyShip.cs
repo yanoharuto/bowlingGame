@@ -9,6 +9,7 @@ using UnityEngine;
 public class FlyShip : MonoBehaviour
 {
     [SerializeField] Move move;
+
     enum GameFase
     {
         start,
@@ -16,12 +17,13 @@ public class FlyShip : MonoBehaviour
         end,
     }
     public bool isAlive { get; private set; } = true;
-    
+    [SerializeField] EffectPlayer eP;
     /// <summary>
     /// ˆÊ’u‚ð“`‚¦‚é
     /// </summary>
     void Start()
     {
+        eP.StopEffect();
         GameObjectPosition.AddDictionaryObject(gameObject);
     }
     private void Update()
@@ -39,6 +41,8 @@ public class FlyShip : MonoBehaviour
             var rBody=GetComponent<Rigidbody>();
             rBody.isKinematic = true;
             rBody.velocity= Vector3.zero;
+            eP.StartEffect();
+
         }
     }
 }
