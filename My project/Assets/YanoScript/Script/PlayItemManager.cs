@@ -54,9 +54,10 @@ public class PlayItemManager : MonoBehaviour
             if (sValue[1] < 0)
             {
                 itemNum++;
-                if(itemNum>=items.Count)
+                if (itemNum >= items.Count) 
                 {
-                    itemNum = items.Count - 1;
+                    itemNum = items.Count;
+                    itemNum -= 1;
                 }
             }
             else

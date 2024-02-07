@@ -13,12 +13,13 @@ public class RouteManager : MonoBehaviour
     [SerializeField] Vector3 betweenMin;
     [Header("Ring取得時のPlayerとの最大差")]
     [SerializeField] Vector3 betweenMax;
-
+    public bool isGetRingPerfect { get; private set; }
     // 座標差保存変数
     Vector3 preservation;
 
     // リング取得数保持
-    int counter = 0;
+    public int counter { get; private set; } = 0;
+    public int allRings { get; private set; }
 
     // シーン切り替えのために取得
     ScenesTransition m_ScenesTransition;
@@ -28,11 +29,13 @@ public class RouteManager : MonoBehaviour
     {
         preservation = Vector3.zero;
         m_ScenesTransition = new ScenesTransition();
+        allRings = Rings.Length;
     }
 
     // Update is called once per frame
     void Update()
     {
+        counter = 0;
         for (int i = 0; i < Rings.Length; i++)
         {
             // Ringがアクティブじゃなければ飛ばす
@@ -56,14 +59,11 @@ public class RouteManager : MonoBehaviour
             else
             {
                 counter++;
-
                 if(counter == Rings.Length)
                 {
-                    m_ScenesTransition.ST_ChangeScenes("リザルト");
+                    isGetRingPerfect = true;
                 }
             }
         }
-
-        counter = 0;
     }
 }

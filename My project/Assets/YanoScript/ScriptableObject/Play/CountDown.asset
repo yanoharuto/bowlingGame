@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: CountDown
   m_EditorClassIdentifier: 
   setFase: 1
-  setItems: []
+  setItems:
+  - {fileID: 11400000, guid: 7daab424eb385754782b08157a87e3ef, type: 2}
+  setIsHorizon: 0

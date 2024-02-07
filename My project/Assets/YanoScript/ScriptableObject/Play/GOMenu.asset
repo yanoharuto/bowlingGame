@@ -10,7 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: feb26fff67a191c4d90c2cec822bd1f0, type: 3}
-  m_Name: DisplayMenu
+  m_Name: GOMenu
   m_EditorClassIdentifier: 
-  setNextFase: 0
-  setNextFaseKeyButton: 2
+  setNextFase: 5
+  setNextFaseKeyButton: 5
+  setIsCursor: 0
+  setIsLoad: 0
+  setLoadName: 
+  setCursorPos: {x: 0, y: 0}

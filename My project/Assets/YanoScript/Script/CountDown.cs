@@ -9,15 +9,18 @@ public class CountDown : MonoBehaviour
     [SerializeField] Text countText;
     [SerializeField] CountDownText texts;
     public bool isEndCountDown { get; private set; }
-    private float time;
+    private float time = 0;
     private void Update()
     {
         if (PlayFaseManager.nowFase == PlayFaseManager.Fase.countDown)
         {
             time += Time.deltaTime;
-            if (time > 5) 
+            if(time >6)
             {
-                isEndCountDown= true;
+                isEndCountDown = true;
+            }
+            else if (time > 5) 
+            {
                 countText.text = texts.end;
             }
             else if(time > 4)
@@ -36,6 +39,7 @@ public class CountDown : MonoBehaviour
             {
                 countText.text = texts.start;
             }
+            isEndCountDown = true;
         }
     }
 }

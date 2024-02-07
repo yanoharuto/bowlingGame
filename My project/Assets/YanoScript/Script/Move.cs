@@ -76,7 +76,6 @@ public class Move : MonoBehaviour
         var horizon = sValue[0];
         var vertical = sValue[1];
         var addRotate = Vector3.zero;
-        
         if (Mathf.Abs(horizon) > 0.5f)
         {
             addRotate.z = setSpeed.rotaSpeed.z * rotaSpeedZ;
@@ -109,6 +108,7 @@ public class Move : MonoBehaviour
         {
             rotaSpeedX = 0;
         }
+        
         if (JoyconInput.lJ.GetButton(Joycon.Button.SHOULDER_1)) 
         {
             addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY ;
@@ -121,12 +121,15 @@ public class Move : MonoBehaviour
             rotaSpeedY += setSpeed.rotaAccelSpeed * Time.deltaTime;
             rotaSpeedY = rotaSpeedY > setSpeed.rotaMaxSpeed ? setSpeed.rotaMaxSpeed : rotaSpeedY;
         }
-        else if(Mathf.Abs(rotaSpeedY) > 0)
+        else if(Mathf.Abs(rotaSpeedY) > 0.0001f)
         {
             rotaSpeedY = Mathf.Lerp(rotaSpeedY,0,setSpeed.rotaDeccelSpeed);
             addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY;
         }
-
+        else
+        {
+            rotaSpeedY = 0;
+        }
         if (addRotate.magnitude > 0.1f)
         {
             transform.Rotate(addRotate);

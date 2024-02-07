@@ -14,4 +14,5 @@ public class GameOverProcessor : MonoBehaviour
             fade.FadeIn(1f);
         }
     }
+    public bool isFlyShipAlive { get { return fS.isAlive; } }
 }
