@@ -10,6 +10,7 @@ public class JoyconInput :MonoBehaviour
 {
     static public Joycon rJ { get; private set; }
     static public Joycon lJ { get; private set; }
+    static bool isInit=false;
     /// <summary>
     /// 左ボタンの入力段階リスト
     /// </summary>
@@ -87,28 +88,34 @@ public class JoyconInput :MonoBehaviour
         }
         return false;
     }
-    private void Start()
+    private void Awake()
     {
-        foreach (Joycon j in JoyconManager.Instance.j)
+        
+        if (!isInit)
         {
-            if(j.isLeft)
+            Debug.Log("do");
+            foreach (Joycon j in JoyconManager.Instance.j)
             {
-                lJ = j;
+                if (j.isLeft)
+                {
+                    lJ = j;
+                }
+                else
+                {
+                    rJ = j;
+                }
             }
-            else
-            {
-                rJ = j;
-            }
+            rButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
+            rButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
+            rButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
+            rButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
+            rButtons.Add(Joycon.Button.PLUS, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
+            isInit= true;
         }
-        rButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
-        rButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
-        rButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
-        rButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
-        rButtons.Add(Joycon.Button.PLUS, InputFase.free);
-        lButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
-        lButtons.Add(Joycon.Button.DPAD_UP , InputFase.free);
-        lButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
-        lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
     }
     /// <summary>
     /// 

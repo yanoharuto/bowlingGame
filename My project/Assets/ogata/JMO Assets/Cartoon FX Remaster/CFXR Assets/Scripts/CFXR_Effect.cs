@@ -649,7 +649,7 @@ namespace CartoonFX
 
 		void OnDestroy()
 		{
-			UnregisterEditorUpdate();
+			//UnregisterEditorUpdate();
 		}
 
 		public void RegisterEditorUpdate()

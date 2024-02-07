@@ -118,13 +118,13 @@ public class Move : MonoBehaviour
             rotaSpeedX = 0;
         }
         
-        if (JoyconInput.lJ.GetButton(Joycon.Button.SHOULDER_1)) 
+        if (JoyconInput.GetLButtonFase(Joycon.Button.SHOULDER_1)==JoyconInput.InputFase.hold) 
         {
             addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY ;
             rotaSpeedY -= setSpeed.rotaAccelSpeed * Time.deltaTime;
             rotaSpeedY = rotaSpeedY < - setSpeed.rotaMaxSpeed ? -setSpeed.rotaMaxSpeed : rotaSpeedY;
         }
-        else if( JoyconInput.rJ.GetButton(Joycon.Button.SHOULDER_1))
+        else if( JoyconInput.GetRButtonFase(Joycon.Button.SHOULDER_1)==JoyconInput.InputFase.hold)
         {
             addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY;
             rotaSpeedY += setSpeed.rotaAccelSpeed * Time.deltaTime;

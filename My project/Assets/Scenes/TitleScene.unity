@@ -1521,6 +1521,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 4663894260598175620, guid: 26a8349bbe7b95f42805a705df996e54, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4663894261153113578, guid: 26a8349bbe7b95f42805a705df996e54, type: 3}
       propertyPath: m_Name
       value: MoveObject
@@ -1567,6 +1571,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4663894261153113580, guid: 26a8349bbe7b95f42805a705df996e54, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818646415404955316, guid: 26a8349bbe7b95f42805a705df996e54, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
