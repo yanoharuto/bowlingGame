@@ -39,6 +39,9 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 	public void Collect()
 	{
+		Debug.Log("取得");
+
+
 		if(collectSound)
 			AudioSource.PlayClipAtPoint(collectSound, transform.position);
 		if(collectEffect)
