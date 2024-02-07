@@ -59,7 +59,7 @@ public class RouteManager : MonoBehaviour
             else
             {
                 counter++;
-                if(counter == Rings.Length)
+                if (counter == Rings.Length)
                 {
                     isGetRingPerfect = true;
                 }
