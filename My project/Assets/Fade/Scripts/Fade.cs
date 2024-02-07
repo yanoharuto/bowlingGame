@@ -54,8 +54,7 @@ public class Fade : MonoBehaviour
 	IEnumerator FadeoutCoroutine (float time, System.Action action)
 	{
 		float endTime = Time.timeSinceLevelLoad + time * (cutoutRange);
-
-		var endFrame = new WaitForEndOfFrame ();
+        var endFrame = new WaitForEndOfFrame ();
 
 		while (Time.timeSinceLevelLoad <= endTime) {
 			cutoutRange = (endTime - Time.timeSinceLevelLoad) / time;
@@ -91,7 +90,6 @@ public class Fade : MonoBehaviour
 
 	public Coroutine FadeOut (float time, System.Action action)
 	{
-		StopAllCoroutines ();
 		return StartCoroutine (FadeoutCoroutine (time, action));
 	}
 

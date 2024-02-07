@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e78bfa7ca50fac4c9ac48198e14f874, type: 3}
   m_Name: CountDown
   m_EditorClassIdentifier: 
-  setFase: 1
+  setFase: 2
   setItems:
   - {fileID: 11400000, guid: 7daab424eb385754782b08157a87e3ef, type: 2}
   setIsHorizon: 0

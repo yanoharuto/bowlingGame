@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: GOLoadTitle
   m_EditorClassIdentifier: 
   setNextFase: 0
-  setNextFaseKeyButton: 0
+  setNextFaseKeyButton: 1
+  setIsCursor: 0
+  setIsLoad: 1
+  setLoadName: 
+  setCursorPos: {x: 0, y: 0}

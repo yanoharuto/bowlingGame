@@ -233,6 +233,7 @@ MonoBehaviour:
   gameOverProccesor: {fileID: 59516183}
   rManager: {fileID: 1797574660}
   fade: {fileID: 411405155}
+  fadeOut: {fileID: 1205599848}
 --- !u!114 &59516181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,7 +1235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectList: []
-  fase: 4
+  fase: 5
 --- !u!1 &341237595
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2456,7 @@ PrefabInstance:
       objectReference: {fileID: 2800000, guid: d90d9afc98e76ad4eaf84fcf286a6ce7, type: 3}
     - target: {fileID: 11491604, guid: 53c22e1773be7f84aad8ed8b7b58fa6e, type: 3}
       propertyPath: isStart
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22424616, guid: 53c22e1773be7f84aad8ed8b7b58fa6e, type: 3}
       propertyPath: m_Pivot.x
@@ -2839,7 +2840,7 @@ MonoBehaviour:
   - {fileID: 1772448505}
   - {fileID: 248703193}
   - {fileID: 1091401619}
-  fase: 3
+  fase: 4
 --- !u!198 &1147989307 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8771226862425673866, guid: 701408748cb82ab438225a0ea85a7252, type: 3}
@@ -2917,6 +2918,82 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7594217606404606274, guid: 701408748cb82ab438225a0ea85a7252, type: 3}
   m_PrefabInstance: {fileID: 228482185}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1205599846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1205599847}
+  - component: {fileID: 1205599849}
+  - component: {fileID: 1205599848}
+  m_Layer: 5
+  m_Name: FadeOut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1205599847
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205599846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 20, y: 20, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 411405159}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1205599848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205599846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1205599849
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205599846}
+  m_CullTransparentMesh: 1
 --- !u!1 &1207282195
 GameObject:
   m_ObjectHideFlags: 0
@@ -3498,7 +3575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectList:
   - {fileID: 1861734740}
-  fase: 1
+  fase: 2
 --- !u!1 &1452199204
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,7 +4108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectList:
   - {fileID: 92741530}
-  fase: 5
+  fase: 6
 --- !u!1 &1640303604
 GameObject:
   m_ObjectHideFlags: 0
@@ -4138,7 +4215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectList:
   - {fileID: 1628324028}
-  fase: 2
+  fase: 3
 --- !u!1 &1695475838
 GameObject:
   m_ObjectHideFlags: 0
@@ -5038,7 +5115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectList:
   - {fileID: 1303514330}
-  fase: 0
+  fase: 1
 --- !u!198 &2015202570 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8771226862425673856, guid: 701408748cb82ab438225a0ea85a7252, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb26fff67a191c4d90c2cec822bd1f0, type: 3}
   m_Name: GOMenu
   m_EditorClassIdentifier: 
-  setNextFase: 5
+  setNextFase: 6
   setNextFaseKeyButton: 5
   setIsCursor: 0
   setIsLoad: 0

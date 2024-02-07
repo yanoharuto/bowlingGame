@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e78bfa7ca50fac4c9ac48198e14f874, type: 3}
   m_Name: Menu
   m_EditorClassIdentifier: 
-  setFase: 0
+  setFase: 6
   setItems:
   - {fileID: 11400000, guid: 750b27fdffb270a49b160a59e8cbef42, type: 2}
   - {fileID: 11400000, guid: 1b4a76f5bee9dc447a41bb7d4709f745, type: 2}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 /// <summary>
 /// 
 /// </summary>
@@ -9,14 +10,16 @@ public class PlayFaseManager : MonoBehaviour
 {
     public enum Fase
     {
+        fadeOut,
         displayRule,
         countDown,
         playFlight,
         gameOver,
         clear,
-        menu
+        menu,
+        fadeIn
     }
-    public static Fase nowFase { get; private set; } = Fase.displayRule;
+    public static Fase nowFase { get; private set; } = Fase.fadeOut;
     [SerializeField] PlayFase displayRule;
     [SerializeField] PlayFase playFlight;
     [SerializeField] PlayFase gameOver;
@@ -29,20 +32,37 @@ public class PlayFaseManager : MonoBehaviour
     [SerializeField] GameOverProcessor gameOverProccesor;
     [SerializeField] RouteManager rManager;
     [SerializeField] Fade fade;
+    [SerializeField] Image fadeOut;
     private void Start()
     {
         pIManager.SetItems(displayRule.items,displayRule.isHorizon);
-        fade.FadeOut(1f);
+        
     }
     private void Update()
-    {
+    {        
         var tempFase = nowFase;
         if(rManager.isGetRingPerfect)
         {
             fadeLoad.FadeInAndLoad("ResultScene");
         }
+        if (pIManager.isNextFase)
+        {
+            if (pIManager.isLoad)//ロード
+            {
+                var loadName = SceneManager.GetActiveScene().name;
+                if (nowFase == Fase.clear) //クリアの時だけ次のシーンを所得
+                {
+                    loadName = pIManager.GetNextLoadStageName();
+                }
+                fadeLoad.FadeInAndLoad(loadName);
+            }
+            else
+            {
+                nowFase = pIManager.GetNextFase();
+            }
+        }
         //ゲームオーバー
-        if (!gameOverProccesor.isFlyShipAlive)
+        else if (!gameOverProccesor.isFlyShipAlive)
         {
             nowFase = Fase.gameOver;
         }
@@ -54,22 +74,19 @@ public class PlayFaseManager : MonoBehaviour
                 nowFase = Fase.playFlight;
             }
         }
-        if (pIManager.isNextFase)
+        else if(nowFase==Fase.fadeOut)
         {
-            if(pIManager.isLoad)//ロード
+            var c = fadeOut.color;
+            c.a-=0.1f;
+            fadeOut.color = c;
+            if (c.a <= 0.01f)
             {
-                var loadName = SceneManager.GetActiveScene().name;
-                if (nowFase == Fase.clear) //クリアの時だけ次のシーンを所得
-                {
-                    loadName = pIManager.GetNextLoadStageName();
-                }
-                fadeLoad.FadeInAndLoad(loadName);
-            }   
-            else
-            {
-                nowFase = pIManager.GetNextFase();
+                nowFase= Fase.displayRule;
+                
             }
         }
+        
+        Debug.Log(nowFase);
         if (nowFase == tempFase)
         {
             //分岐

@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setNextFase: 0
   setNextFaseKeyButton: 0
+  setIsCursor: 0
+  setIsLoad: 1
+  setLoadName: Title
+  setCursorPos: {x: 0, y: 0}

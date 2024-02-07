@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb26fff67a191c4d90c2cec822bd1f0, type: 3}
   m_Name: nextCountDown
   m_EditorClassIdentifier: 
-  setNextFase: 1
+  setNextFase: 2
   setNextFaseKeyButton: 1
   setIsCursor: 1
   setIsLoad: 0
