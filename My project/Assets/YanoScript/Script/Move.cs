@@ -19,6 +19,7 @@ public class Move : MonoBehaviour
     [SerializeField] private PlayerSpeed setSpeed;
     /// ‚¾‚ñ‚¾‚ñ‰Á‘¬‚µ‚½‚èŒ¸‘¬‚µ‚½‚è‚·‚é
     private float speed;
+    private float brekePower;
     private float rotaSpeedX;
     private float rotaSpeedY;
     private float rotaSpeedZ;
@@ -37,14 +38,20 @@ public class Move : MonoBehaviour
     {
         if (JoyconInput.GetRButtonFase(Joycon.Button.DPAD_DOWN) == JoyconInput.InputFase.hold)
         {
-            speed -= setSpeed.decelSpeed * Time.deltaTime;
-            if(speed<setSpeed.minSpeed)
+            brekePower += setSpeed.decelSpeed * Time.deltaTime;
+            speed -= brekePower;
+            if(speed < setSpeed.minSpeed)
             {
                 speed = setSpeed.minSpeed;
+            }
+            if(brekePower > setSpeed.maxBreakPow)
+            {
+                brekePower = setSpeed.maxBreakPow;
             }
         }
         else
         {
+            brekePower = Mathf.Lerp(brekePower, 0, Time.deltaTime);
             if (JoyconInput.GetRButtonFase(Joycon.Button.DPAD_RIGHT) == JoyconInput.InputFase.hold)
             {
                 speed += setSpeed.accelSpeed * setSpeed.boostRaito * Time.deltaTime;
@@ -69,43 +76,57 @@ public class Move : MonoBehaviour
         var horizon = sValue[0];
         var vertical = sValue[1];
         var addRotate = Vector3.zero;
-       
+        
         if (Mathf.Abs(horizon) > 0.5f)
         {
-            addRotate.z = (horizon > 0 ? -setSpeed.rotaSpeed.z : setSpeed.rotaSpeed.z) * rotaSpeedZ;
-            rotaSpeedZ += setSpeed.rotaAccelSpeed * Time.deltaTime;
-            rotaSpeedZ = rotaSpeedZ > setSpeed.rotaMaxSpeed ? setSpeed.rotaMaxSpeed : rotaSpeedZ;
+            addRotate.z = setSpeed.rotaSpeed.z * rotaSpeedZ;
+
+            rotaSpeedZ += (horizon > 0 ? -setSpeed.rotaAccelSpeed : setSpeed.rotaAccelSpeed) * Time.deltaTime;
+            
+            rotaSpeedZ = rotaSpeedZ > setSpeed.rotaMaxSpeed ? (rotaSpeedZ > 0 ? 1 : -1) * setSpeed.rotaMaxSpeed : rotaSpeedZ;
         }
-        else if(rotaSpeedZ > 0)
+        else if(Mathf.Abs(rotaSpeedZ) > 0.0001f)
         {
             rotaSpeedZ = Mathf.Lerp(rotaSpeedZ, 0, setSpeed.rotaDeccelSpeed);
+            addRotate.z = setSpeed.rotaSpeed.z * rotaSpeedZ;
+        }
+        else
+        {
+            rotaSpeedZ = 0;
         }
         if (Mathf.Abs(vertical) > 0.5f)
         {
-            addRotate.x = (vertical > 0 ? setSpeed.rotaSpeed.x : -setSpeed.rotaSpeed.x) * rotaSpeedX;
-            rotaSpeedX += setSpeed.rotaAccelSpeed * Time.deltaTime;
-            rotaSpeedX = rotaSpeedX > setSpeed.rotaMaxSpeed ? setSpeed.rotaMaxSpeed : rotaSpeedX;
+            addRotate.x = setSpeed.rotaSpeed.x * rotaSpeedX;
+            rotaSpeedX += (vertical > 0 ? -setSpeed.rotaAccelSpeed : setSpeed.rotaAccelSpeed) * Time.deltaTime;
+            rotaSpeedX = Mathf.Abs(rotaSpeedX) > setSpeed.rotaMaxSpeed ? (rotaSpeedZ > 0 ? 1 : -1) * setSpeed.rotaMaxSpeed : rotaSpeedX;
         }
-        else if(rotaSpeedX > 0)
+        else if(Mathf.Abs(rotaSpeedX) > 0.0001f)
         {
             rotaSpeedX = Mathf.Lerp(rotaSpeedX, 0, setSpeed.rotaDeccelSpeed);
+            addRotate.x = setSpeed.rotaSpeed.x * rotaSpeedX;
+        }
+        else
+        {
+            rotaSpeedX = 0;
         }
         if (JoyconInput.lJ.GetButton(Joycon.Button.SHOULDER_1)) 
         {
-            addRotate.y = -setSpeed.rotaSpeed.y * rotaSpeedY ;
-            rotaSpeedY += setSpeed.rotaAccelSpeed * Time.deltaTime;
-            rotaSpeedY = rotaSpeedY > setSpeed.rotaMaxSpeed ? setSpeed.rotaMaxSpeed : rotaSpeedY;
+            addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY ;
+            rotaSpeedY -= setSpeed.rotaAccelSpeed * Time.deltaTime;
+            rotaSpeedY = rotaSpeedY < - setSpeed.rotaMaxSpeed ? -setSpeed.rotaMaxSpeed : rotaSpeedY;
         }
         else if( JoyconInput.rJ.GetButton(Joycon.Button.SHOULDER_1))
         {
-            addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY ;
+            addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY;
             rotaSpeedY += setSpeed.rotaAccelSpeed * Time.deltaTime;
             rotaSpeedY = rotaSpeedY > setSpeed.rotaMaxSpeed ? setSpeed.rotaMaxSpeed : rotaSpeedY;
         }
-        else if(rotaSpeedY > 0)
+        else if(Mathf.Abs(rotaSpeedY) > 0)
         {
             rotaSpeedY = Mathf.Lerp(rotaSpeedY,0,setSpeed.rotaDeccelSpeed);
+            addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY;
         }
+
         if (addRotate.magnitude > 0.1f)
         {
             transform.Rotate(addRotate);

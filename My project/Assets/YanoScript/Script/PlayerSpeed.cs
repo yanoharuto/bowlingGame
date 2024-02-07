@@ -35,4 +35,8 @@ public class PlayerSpeed : ScriptableObject
     [SerializeField][Header("最低速度")] private float setMinSpeed;
     //最低速度
     public float minSpeed { get => setMinSpeed; }
+
+    [SerializeField][Header("最大ブレーキ力")] private float setMaxBreakePow;
+    //最低速度
+    public float maxBreakPow { get => setMaxBreakePow; }
 }
