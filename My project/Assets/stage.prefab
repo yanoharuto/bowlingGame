@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3708998776764757059}
   m_Layer: 0
   m_Name: Ocean (4)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 3708998777352201506}
   m_Layer: 0
   m_Name: Ocean (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 3708998777624751136}
   m_Layer: 0
   m_Name: Ocean (6)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 3708998777915884057}
   m_Layer: 0
   m_Name: Ocean (7)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 3708998777931783271}
   m_Layer: 0
   m_Name: Ocean (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 3708998777994178719}
   m_Layer: 0
   m_Name: Ocean (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -749,6 +749,7 @@ GameObject:
   - component: {fileID: 3708998778221952360}
   - component: {fileID: 3708998778221952361}
   - component: {fileID: 3708998778221952366}
+  - component: {fileID: 4463205272977539159}
   m_Layer: 0
   m_Name: Ocean
   m_TagString: Obstacle
@@ -851,6 +852,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ebfb4988eb16add4784122504f75fe2f, type: 2}
+--- !u!65 &4463205272977539159
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708998778221952365}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 750, y: 2.9997435, z: 750}
+  m_Center: {x: 0, y: 0.00012797117, z: 0}
 --- !u!1 &3708998778287686762
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +879,7 @@ GameObject:
   - component: {fileID: 3708998778287686756}
   m_Layer: 0
   m_Name: Ocean (5)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -965,7 +979,7 @@ GameObject:
   - component: {fileID: 3708998778458343973}
   m_Layer: 0
   m_Name: Ocean (8)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1058,6 +1072,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3708998777103834039}
     m_Modifications:
+    - target: {fileID: 3082354937608539438, guid: e346f2f63e998e043ab593b762e9f63c, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 3653010865478302161, guid: e346f2f63e998e043ab593b762e9f63c, type: 3}
       propertyPath: m_Name
       value: island1_design2_c4d
@@ -1120,6 +1138,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3708998777103834039}
     m_Modifications:
+    - target: {fileID: 3082354937608539438, guid: e346f2f63e998e043ab593b762e9f63c, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 3653010865478302161, guid: e346f2f63e998e043ab593b762e9f63c, type: 3}
       propertyPath: m_Name
       value: island_custam (1)
@@ -1194,6 +1216,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3708998777103834039}
     m_Modifications:
+    - target: {fileID: 3082354937608539438, guid: e346f2f63e998e043ab593b762e9f63c, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 3653010865478302161, guid: e346f2f63e998e043ab593b762e9f63c, type: 3}
       propertyPath: m_Name
       value: island_custam

@@ -110,10 +110,13 @@ public class JoyconInput :MonoBehaviour
             rButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
             rButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
             rButtons.Add(Joycon.Button.PLUS, InputFase.free);
+            rButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
+
             lButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
             lButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
             lButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
             lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
+            lButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
             isInit= true;
         }
     }
@@ -127,10 +130,12 @@ public class JoyconInput :MonoBehaviour
         UpdateButton(rButtons,rJ,Joycon.Button.DPAD_UP);
         UpdateButton(rButtons,rJ,Joycon.Button.DPAD_RIGHT);
         UpdateButton(rButtons,rJ,Joycon.Button.PLUS);
+        UpdateButton(rButtons,rJ,Joycon.Button.SHOULDER_1);
         UpdateButton(lButtons, lJ, Joycon.Button.DPAD_DOWN);
         UpdateButton(lButtons, lJ, Joycon.Button.DPAD_LEFT);
         UpdateButton(lButtons, lJ, Joycon.Button.DPAD_UP);
         UpdateButton(lButtons, lJ, Joycon.Button.DPAD_RIGHT);
+        UpdateButton(lButtons, lJ, Joycon.Button.SHOULDER_1);
     }
     /// <summary>
     /// ì¸óÕèÛãµçXêV
@@ -147,7 +152,7 @@ public class JoyconInput :MonoBehaviour
 
                 buttons[bType] = InputFase.hold;
             }
-            else
+            else if (buttons[bType] != InputFase.hold) 
             {
                 buttons[bType] = InputFase.push;
             }

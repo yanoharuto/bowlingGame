@@ -117,14 +117,14 @@ public class Move : MonoBehaviour
         {
             rotaSpeedX = 0;
         }
-        
-        if (JoyconInput.GetLButtonFase(Joycon.Button.SHOULDER_1)==JoyconInput.InputFase.hold) 
+
+        if (JoyconInput.GetLButtonFase(Joycon.Button.SHOULDER_1) == JoyconInput.InputFase.hold)
         {
-            addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY ;
+            addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY;
             rotaSpeedY -= setSpeed.rotaAccelSpeed * Time.deltaTime;
-            rotaSpeedY = rotaSpeedY < - setSpeed.rotaMaxSpeed ? -setSpeed.rotaMaxSpeed : rotaSpeedY;
+            rotaSpeedY = rotaSpeedY < -setSpeed.rotaMaxSpeed ? -setSpeed.rotaMaxSpeed : rotaSpeedY;
         }
-        else if( JoyconInput.GetRButtonFase(Joycon.Button.SHOULDER_1)==JoyconInput.InputFase.hold)
+        else if (JoyconInput.GetRButtonFase(Joycon.Button.SHOULDER_1) == JoyconInput.InputFase.hold) 
         {
             addRotate.y = setSpeed.rotaSpeed.y * rotaSpeedY;
             rotaSpeedY += setSpeed.rotaAccelSpeed * Time.deltaTime;
@@ -147,8 +147,6 @@ public class Move : MonoBehaviour
         var newVelocity = transform.forward * speed ;   
         rBody.velocity = newVelocity;
     }
-
-
 
     /// <summary>
     /// アクセルボタンを押したかのブールのゲッターセッター
