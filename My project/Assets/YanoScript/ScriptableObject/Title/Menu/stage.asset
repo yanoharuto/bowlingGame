@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setCursorPos: {x: 360, y: -60}
   setNextFase: 2
-  setNextSceneName: FlightGameScene_Easy
+  setNextSceneName: FlightGameScene_Hard
   setIsLoadScene: 1
   setIsNotCursor: 0
   setNextKeyButton: 1

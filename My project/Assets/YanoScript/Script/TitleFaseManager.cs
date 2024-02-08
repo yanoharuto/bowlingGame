@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
-using static UnityEditor.Progress;
+
 /// <summary>
 /// ƒ^ƒCƒgƒ‹‚ÌH’öŠÇ—
 /// </summary>

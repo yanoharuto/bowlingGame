@@ -42,6 +42,7 @@ public class PlayFaseManager : MonoBehaviour
     private void Update()
     {        
         var tempFase = nowFase;
+        Debug.Log(nowFase);
         if(rManager.isGetRingPerfect)
         {
             fadeLoad.FadeInAndLoad("ResultScene");
