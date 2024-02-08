@@ -14,10 +14,10 @@ public class TitleObject : MonoBehaviour
     {
         if (objList.Count > 0)
         {
-            var isUpper = upperFase == TitleFaseManager.nowFase;
+            var isUpper = upperFase == TitleFaseManager.nowFase && !TitleFaseManager.isLoadScene;
             foreach (var obj in objList)
             {
-                obj.SetActive(isUpper);
+                obj.SetActive(isUpper); 
             }
         }
     }

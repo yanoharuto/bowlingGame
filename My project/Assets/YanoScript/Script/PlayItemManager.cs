@@ -15,8 +15,8 @@ public class PlayItemManager : MonoBehaviour
         items = setItem;
         isHorizon = setHorizon;
         itemNum = 0;
+        Debug.Log(itemNum);
         isNextFase = false;
-        Debug.Log(items.Count);
     }
 
     public PlayFaseManager.Fase GetNextFase()
@@ -30,23 +30,22 @@ public class PlayItemManager : MonoBehaviour
     private void Update()
     {
         var sValue = JoyconInput.lJ.GetStick();
-        Debug.Log(sValue[0]);
         if (isHorizon && Mathf.Abs(sValue[0]) < 0.1f) 
         {
-            if (sValue[0] < 0) 
-            {
-                itemNum++;
-                if (itemNum >= items.Count)
-                {
-                    itemNum = items.Count - 1;
-                }
-            }
-            else
+            if (sValue[0] > 0) 
             {
                 itemNum--;
                 if (itemNum <= 0)
                 {
                     itemNum = 0;
+                }
+            }
+            else
+            {
+                itemNum++;
+                if (itemNum >= items.Count)
+                {
+                    itemNum = items.Count - 1;
                 }
             }
         }

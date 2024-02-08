@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: StageSelect
   m_EditorClassIdentifier: 
   setNowFase: 2
-  setObjList: []
   setItemList:
   - {fileID: 11400000, guid: 4cc7a3acfc0ce074ca8bf4c9afed005b, type: 2}
+  - {fileID: 11400000, guid: e6bbe6ab9938bc44791972e55bd03331, type: 2}
+  - {fileID: 11400000, guid: 8b24986ba39da3f4eb396389bae46012, type: 2}

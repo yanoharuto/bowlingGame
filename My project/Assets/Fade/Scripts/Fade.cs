@@ -44,7 +44,11 @@ public class Fade : MonoBehaviour
 	{
 		fade = GetComponent<IFade> ();
 	}
-
+	public void SetRange()
+	{
+		cutoutRange = 1;
+		fade.Range = cutoutRange;
+	}
 	void OnValidate ()
 	{
 		Init ();

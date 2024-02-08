@@ -11,7 +11,7 @@ public class CountDown : MonoBehaviour
     private float time = 0;
     private void Update()
     {
-        if (PlayFaseManager.nowFase == PlayFaseManager.Fase.countDown)
+        if (PlayFaseManager.nowFade == PlayFaseManager.Fase.countDown)
         {
             time += Time.deltaTime;
             if(time >6)

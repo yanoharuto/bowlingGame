@@ -35,7 +35,6 @@ public class RouteManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        counter = 0;
         for (int i = 0; i < Rings.Length; i++)
         {
             // Ringがアクティブじゃなければ飛ばす
@@ -54,16 +53,14 @@ public class RouteManager : MonoBehaviour
                     Debug.Log(Rings[i]);
                     // ノンアクティブ化
                     Rings[i].SetActive(false);
+                    counter++;
                 }
             }
-            else
-            {
-                counter++;
-                if (counter == Rings.Length)
-                {
-                    isGetRingPerfect = true;
-                }
-            }
+        }
+        Debug.Log(counter);
+        if (counter >= Rings.Length)
+        {
+            isGetRingPerfect = true;
         }
     }
 }

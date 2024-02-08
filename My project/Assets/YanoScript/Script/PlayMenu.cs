@@ -11,7 +11,7 @@ public class PlayMenu : MonoBehaviour
     }
     private void Update()
     {
-        if(PlayFaseManager.nowFase == PlayFaseManager.Fase.menu)
+        if(PlayFaseManager.nowFade == PlayFaseManager.Fase.menu)
         { 
             Time.timeScale = 0;
         }

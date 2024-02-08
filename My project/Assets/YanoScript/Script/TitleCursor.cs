@@ -51,22 +51,25 @@ public class TitleCursor : MonoBehaviour
     private void Update()
     {
         var lStickValue = JoyconInput.lJ.GetStick();
-        if (!isInput && Mathf.Abs(lStickValue[1]) > 0.9f)//カーソルの移動
+        if (Mathf.Abs(lStickValue[1]) > 0.9f)//カーソルの移動
         {
-            if (lStickValue[1] < 0)
+            if (!isInput)
             {
-                itemNum++;
-                itemNum = itemNum >= items.Count ? items.Count - 1 : itemNum;
+                if (lStickValue[1] < 0)
+                {
+                    itemNum++;
+                    itemNum = itemNum >= items.Count ? items.Count - 1 : itemNum;
+                }
+                else
+                {
+                    itemNum--;
+                    itemNum = itemNum <= 0 ? 0 : itemNum;
+                }
+                rT.anchoredPosition = items[itemNum].cursorPos;
+                isInput = true;
             }
-            else
-            {
-                itemNum--;
-                itemNum = itemNum <= 0 ? 0 : itemNum;
-            }
-            rT.anchoredPosition = items[itemNum].cursorPos;
-            isInput = true;
         }
-        else
+        else 
         {
             isInput= false;
         }

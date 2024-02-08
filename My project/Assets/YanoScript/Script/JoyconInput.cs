@@ -89,30 +89,32 @@ public class JoyconInput :MonoBehaviour
     }
     private void Awake()
     {
-        Debug.Log("do");
-        foreach (Joycon j in JoyconManager.Instance.j)
+        if (rJ==null && lJ==null)
         {
-            if (j.isLeft)
+            foreach (Joycon j in JoyconManager.Instance.j)
             {
-                lJ = j;
+                if (j.isLeft)
+                {
+                    lJ = j;
+                }
+                else
+                {
+                    rJ = j;
+                }
             }
-            else
-            {
-                rJ = j;
-            }
-        }
-        rButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
-        rButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
-        rButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
-        rButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
-        rButtons.Add(Joycon.Button.PLUS, InputFase.free);
-        rButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
+            rButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
+            rButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
+            rButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
+            rButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
+            rButtons.Add(Joycon.Button.PLUS, InputFase.free);
+            rButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
 
-        lButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
-        lButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
-        lButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
-        lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
-        lButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
+            lButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
+        }
     }
     /// <summary>
     /// 

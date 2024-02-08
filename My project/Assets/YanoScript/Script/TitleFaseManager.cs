@@ -15,7 +15,7 @@ public class TitleFaseManager : MonoBehaviour
     //タイトルのカーソル
     [SerializeField] TitleCursor cursor;
     [SerializeField] FadeAndLoader fade;
-    bool isLoadScene;
+    public static bool isLoadScene { get; private set; }
     //工程の種類
     public enum Fase
     {
@@ -34,9 +34,11 @@ public class TitleFaseManager : MonoBehaviour
     /// </summary>
     void Start()
     {
+        Debug.Log("titleInit");
         nowFaseObj = faseList[0];
         cursor.SetItemList(nowFaseObj.itemList);
         nowFase = nowFaseObj.nowFase;
+        isLoadScene = false;
     }
     /// <summary>
     /// 入力があったら更新

@@ -8,7 +8,7 @@ public class PlayObject : MonoBehaviour
     [SerializeField] PlayFaseManager.Fase fase;
     private void Update()
     {
-        var isActive = fase == PlayFaseManager.nowFase;
+        var isActive = fase == PlayFaseManager.nowFade && PlayFaseManager.nowFade != PlayFaseManager.Fase.fadeIn;
         foreach (GameObject obj in objectList)
         {
             obj.SetActive(isActive);

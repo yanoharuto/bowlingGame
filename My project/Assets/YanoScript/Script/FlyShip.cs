@@ -27,9 +27,13 @@ public class FlyShip : MonoBehaviour
     }
     private void Update()
     {
-        move.enabled = PlayFaseManager.nowFase == PlayFaseManager.Fase.playFlight;
+        move.enabled = PlayFaseManager.nowFade == PlayFaseManager.Fase.playFlight;
         var rBody = GetComponent<Rigidbody>();
         rBody.isKinematic = !move.enabled;
+        if (PlayFaseManager.nowFade == PlayFaseManager.Fase.fadeIn) 
+        {
+            isAlive = true;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {

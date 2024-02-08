@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feb26fff67a191c4d90c2cec822bd1f0, type: 3}
-  m_Name: LoadResult
+  m_Script: {fileID: 11500000, guid: f44f45e8604139a45af028205f4b57a8, type: 3}
+  m_Name: Hard
   m_EditorClassIdentifier: 
-  setNextFase: 7
-  setNextFaseKeyButton: 0
-  setIsCursor: 1
-  setIsLoad: 1
-  setLoadName: 
-  setCursorPos: {x: 0, y: 0}
+  setCursorPos: {x: 360, y: -130}
+  setNextFase: 0
+  setNextSceneName: FlightGameScene_Hard
+  setIsLoadScene: 1
+  setIsNotCursor: 0
+  setNextKeyButton: 1

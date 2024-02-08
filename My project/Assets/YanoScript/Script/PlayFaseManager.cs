@@ -19,7 +19,7 @@ public class PlayFaseManager : MonoBehaviour
         menu,
         fadeIn
     }
-    public static Fase nowFase { get; private set; } = Fase.fadeOut;
+    public static Fase nowFade { get; private set; } = Fase.fadeOut;
     [SerializeField] PlayFase displayRule;
     [SerializeField] PlayFase playFlight;
     [SerializeField] PlayFase gameOver;
@@ -33,62 +33,67 @@ public class PlayFaseManager : MonoBehaviour
     [SerializeField] RouteManager rManager;
     [SerializeField] Fade fade;
     [SerializeField] Image fadeOut;
+    public static bool isLoad { get; private set; }  
     private void Start()
     {
         pIManager.SetItems(displayRule.items,displayRule.isHorizon);
     }
     private void Update()
     {        
-        var tempFase = nowFase;
-        Debug.Log(nowFase);
-        if(rManager.isGetRingPerfect)
+        var tempFase = nowFade;
+        Debug.Log(nowFade);
+        Debug.Log(rManager.isGetRingPerfect);
+        if (nowFade == Fase.fadeIn && fadeOut.color.a >= 0.99f) 
         {
+            nowFade = Fase.fadeOut;
+        }
+        else if(nowFade!=Fase.fadeIn&& rManager.isGetRingPerfect)
+        {
+            nowFade = Fase.fadeIn;
             fadeLoad.FadeInAndLoad("ResultScene");
         }
-        if (pIManager.isNextFase)
+        else if (pIManager.isNextFase)
         {
             if (pIManager.isLoad)//ロード
             {
-                var loadName = SceneManager.GetActiveScene().name;
-                if (nowFase == Fase.clear) //クリアの時だけ次のシーンを所得
-                {
-                    loadName = pIManager.GetNextLoadStageName();
-                }
+                var loadName = pIManager.GetNextLoadStageName();
+                Debug.Log(loadName);
+                nowFade = Fase.fadeIn;
                 fadeLoad.FadeInAndLoad(loadName);
             }
             else
             {
-                nowFase = pIManager.GetNextFase();
+                nowFade = pIManager.GetNextFase();
             }
         }
         //ゲームオーバー
         else if (!gameOverProccesor.isFlyShipAlive)
         {
-            nowFase = Fase.gameOver;
+            nowFade = Fase.gameOver;
         }
         //カウントダウン終了
-        else if (nowFase == Fase.countDown)
+        else if (nowFade == Fase.countDown)
         {
             if (countProccesor.isEndCountDown)
             {
-                nowFase = Fase.playFlight;
+                nowFade = Fase.playFlight;
             }
         }
-        else if(nowFase==Fase.fadeOut)
+        else if (nowFade == Fase.fadeOut)
         {
             var c = fadeOut.color;
-            c.a-=0.1f;
+            c.a -= 0.1f;
             fadeOut.color = c;
             if (c.a <= 0.01f)
             {
-                nowFase= Fase.displayRule;
-                
+                nowFade = Fase.displayRule;
+
             }
         }
-        if (nowFase != tempFase)
+        if (nowFade != tempFase)
         {
             //分岐
-            switch (nowFase)
+            switch (nowFade)
             {
                 case Fase.displayRule:
                     break;
