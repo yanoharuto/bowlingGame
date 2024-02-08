@@ -56,6 +56,7 @@ public class JoyconInput :MonoBehaviour
     }
     public static bool IsPressNextKey(NextFaseKeyButton faseKey)
     {
+        
         switch (faseKey) //カーソルが指しているアイテムが反応するボタンを押したとき
         {
             case JoyconInput.NextFaseKeyButton.Up:

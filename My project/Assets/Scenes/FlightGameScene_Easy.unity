@@ -2356,6 +2356,14 @@ PrefabInstance:
       propertyPath: rManager
       value: 
       objectReference: {fileID: 1797574660}
+    - target: {fileID: 8846625562105308926, guid: 8f395ba00304d974fa3d319ccb635315, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846625562105308926, guid: 8f395ba00304d974fa3d319ccb635315, type: 3}
+      propertyPath: cutoutRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8846625562110723446, guid: 8f395ba00304d974fa3d319ccb635315, type: 3}
       propertyPath: m_Name
       value: FadeCanvas

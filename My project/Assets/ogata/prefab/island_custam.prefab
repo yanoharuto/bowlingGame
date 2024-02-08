@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5802458909861100454}
   - component: {fileID: 4347339930941764285}
+  - component: {fileID: 9088815782084619201}
+  - component: {fileID: 4179277649234325663}
   m_Layer: 0
   m_Name: floor
   m_TagString: Untagged
@@ -42,10 +44,37 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 15
-  m_Height: 96.20373
-  m_Direction: 2
-  m_Center: {x: 0, y: -13, z: 8.935086}
+  m_Radius: 18.652134
+  m_Height: 104.56256
+  m_Direction: 0
+  m_Center: {x: 8.316083, y: -13, z: 26.573496}
+--- !u!136 &9088815782084619201
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082354937608539438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 18.239038
+  m_Height: 102.49495
+  m_Direction: 0
+  m_Center: {x: 2.8803468, y: -13, z: -9.714441}
+--- !u!65 &4179277649234325663
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3082354937608539438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 40, y: 1, z: 90}
+  m_Center: {x: 10, y: 0, z: 10}
 --- !u!1 &3653010865478302161
 GameObject:
   m_ObjectHideFlags: 0
