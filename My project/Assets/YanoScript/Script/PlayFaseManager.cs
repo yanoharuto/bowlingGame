@@ -43,14 +43,14 @@ public class PlayFaseManager : MonoBehaviour
         var tempFase = nowFade;
         Debug.Log(nowFade);
         Debug.Log(rManager.isGetRingPerfect);
-        if (nowFade == Fase.fadeIn && fadeOut.color.a >= 0.99f) 
+        if (nowFade == Fase.fadeIn && fadeOut.color.a >= 0.99f)
         {
             nowFade = Fase.fadeOut;
         }
-        else if(nowFade!=Fase.fadeIn&& rManager.isGetRingPerfect)
+        else if (nowFade != Fase.fadeIn && rManager.isGetRingPerfect) 
         {
             nowFade = Fase.fadeIn;
-            fadeLoad.FadeInAndLoad("ResultScene");
+            StartCoroutine( fadeLoad.FadeInAndLoad(fadeOut,"ResultScene"));
         }
         else if (pIManager.isNextFase)
         {
@@ -59,7 +59,7 @@ public class PlayFaseManager : MonoBehaviour
                 var loadName = pIManager.GetNextLoadStageName();
                 Debug.Log(loadName);
                 nowFade = Fase.fadeIn;
-                fadeLoad.FadeInAndLoad(loadName);
+                StartCoroutine(fadeLoad.FadeInAndLoad(fadeOut,loadName));
             }
             else
             {

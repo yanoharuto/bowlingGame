@@ -89,8 +89,6 @@ public class JoyconInput :MonoBehaviour
     }
     private void Awake()
     {
-        if (rJ==null && lJ==null)
-        {
             foreach (Joycon j in JoyconManager.Instance.j)
             {
                 if (j.isLeft)
@@ -115,12 +113,13 @@ public class JoyconInput :MonoBehaviour
             lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
             lButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
         }
-    }
+    
     /// <summary>
     /// 
     /// </summary>
     private void Update()
     {
+
         UpdateButton(rButtons,rJ,Joycon.Button.DPAD_DOWN);
         UpdateButton(rButtons,rJ,Joycon.Button.DPAD_LEFT);
         UpdateButton(rButtons,rJ,Joycon.Button.DPAD_UP);

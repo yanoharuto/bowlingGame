@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.Windows;
 
 /// <summary>
@@ -15,6 +16,7 @@ public class TitleFaseManager : MonoBehaviour
     //タイトルのカーソル
     [SerializeField] TitleCursor cursor;
     [SerializeField] FadeAndLoader fade;
+    [SerializeField] Image image;
     public static bool isLoadScene { get; private set; }
     //工程の種類
     public enum Fase
@@ -29,12 +31,13 @@ public class TitleFaseManager : MonoBehaviour
     //今の工程で必要なもの纏め
     private TitleFase nowFaseObj;
     static public Fase nowFase { get; private set; } = Fase.anyButton;
+    bool fadeF = true;
     /// <summary>
     /// 入力クラスの所得 カーソルの初期化
     /// </summary>
     void Start()
     {
-        Debug.Log("titleInit");
+        
         nowFaseObj = faseList[0];
         cursor.SetItemList(nowFaseObj.itemList);
         nowFase = nowFaseObj.nowFase;
@@ -45,7 +48,21 @@ public class TitleFaseManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (!isLoadScene)
+        if (fadeF)
+        {
+            Debug.Log(image.color.a);
+            if (image.color.a <= 0.01f)
+            {
+                var c = image.color;
+                c.a -= 0.01f;
+                image.color = c;
+            }
+            else
+            {
+                fadeF = false ;
+            }
+        }
+        else if (!isLoadScene)
         {
             var item = cursor.GetTitleItem();
             var isNextFase = false;
@@ -72,7 +89,7 @@ public class TitleFaseManager : MonoBehaviour
             {
                 if (item.isLoadScene)//ロード
                 {
-                    fade.FadeInAndLoad(item.nextScene, 1f);
+                    StartCoroutine(fade.FadeInAndLoad(image, item.nextScene, 1f)) ;
                     isLoadScene = true;
                 }
                 else

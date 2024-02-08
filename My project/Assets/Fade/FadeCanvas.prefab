@@ -1216,7 +1216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectList:
   - {fileID: 9189426269570273270}
-  fase: 0
+  fase: 3
 --- !u!114 &9164238819297960948
 MonoBehaviour:
   m_ObjectHideFlags: 0

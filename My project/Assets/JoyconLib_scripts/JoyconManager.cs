@@ -28,8 +28,7 @@ public class JoyconManager: MonoBehaviour
 
 	void Awake()
 	{
-		if (!isInit)
-		{
+
 			isInit = true;
 			if (instance != null) Destroy(gameObject);
 			instance = this;
@@ -81,14 +80,13 @@ public class JoyconManager: MonoBehaviour
 				ptr = enumerate.next;
 			}
 			HIDapi.hid_free_enumeration(top_ptr);
-		}
+		
 	}
 
     void Start()
     {
 		Debug.Log("title");
-		if (!isInit2)
-		{
+		
 			isInit2 = true;
 			for (int i = 0; i < j.Count; ++i)
 			{
@@ -98,7 +96,7 @@ public class JoyconManager: MonoBehaviour
 				jc.Attach(leds_: LEDs);
 				jc.Begin();
 			}
-		}
+		
     }
 
     void Update()
