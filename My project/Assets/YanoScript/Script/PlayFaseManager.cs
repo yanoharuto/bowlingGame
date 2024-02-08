@@ -37,19 +37,15 @@ public class PlayFaseManager : MonoBehaviour
     private void Start()
     {
         pIManager.SetItems(displayRule.items,displayRule.isHorizon);
-        jI.enabled = true;
-        Debug.Log("start");
-        nowFase = Fase.fadeOut;
+        jI.enabled=true;
     }
     private void Update()
     {        
         var tempFase = nowFase;
-
         if(rManager.isGetRingPerfect)
         {
             fadeLoad.FadeInAndLoad("ResultScene");
         }
-        Debug.Log(nowFase);
         if (pIManager.isNextFase)
         {
             if (pIManager.isLoad)//ÉçÅ[Éh
