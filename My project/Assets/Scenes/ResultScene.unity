@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.15117511, g: 0.9607843, b: 0.06666665, a: 0.5}
+  m_EffectColor: {r: 0.06666665, g: 0.627678, b: 0.9607843, a: 0.5}
   m_EffectDistance: {x: 8, y: -8}
   m_UseGraphicAlpha: 1
 --- !u!1 &275838041
@@ -967,6 +967,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1454225947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1321,7 +1322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.15117511, g: 0.9607843, b: 0.06666665, a: 0.5}
+  m_EffectColor: {r: 0.06666665, g: 0.627678, b: 0.9607843, a: 0.5}
   m_EffectDistance: {x: 8, y: -8}
   m_UseGraphicAlpha: 1
 --- !u!1001 &1643537824
@@ -1487,7 +1488,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3854e4db323ecf1438b9cf2028bb1427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newRecode: {fileID: 0}
+  newRecode: {fileID: 1659381125}
+  clearTimeValue: {fileID: 247748101}
+  bestClearTimeValue: {fileID: 1484257750}
 --- !u!114 &1659381130
 MonoBehaviour:
   m_ObjectHideFlags: 0
