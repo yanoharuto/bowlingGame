@@ -27,7 +27,7 @@ public class Move : MonoBehaviour
     /// <summary>
     /// 加速ボタンが押されているか
     /// </summary>
-    public bool m_buttonAccel { get; private set; }
+    bool m_buttonAccel = false;
 
 
     /// <summary>
@@ -63,14 +63,12 @@ public class Move : MonoBehaviour
             {
                 m_buttonAccel = true;
                 speed += setSpeed.accelSpeed * setSpeed.boostRaito * Time.deltaTime;
-                
             }
             else
             {
                 m_buttonAccel= false;
                 speed += setSpeed.accelSpeed * Time.deltaTime;
             }
-            Debug.Log(m_buttonAccel);
             if (speed > setSpeed.maxSpeed)
             {
                 speed = setSpeed.maxSpeed;
@@ -148,5 +146,16 @@ public class Move : MonoBehaviour
         
         var newVelocity = transform.forward * speed ;   
         rBody.velocity = newVelocity;
+    }
+
+
+
+    /// <summary>
+    /// アクセルボタンを押したかのブールのゲッターセッター
+    /// </summary>
+    public bool getset_buttonAccel
+    {
+        get { return m_buttonAccel; }
+        set { m_buttonAccel = value; }
     }
 }

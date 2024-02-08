@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
-
 /// <summary>
 /// ジョイコン入力
 /// </summary>
@@ -56,7 +55,6 @@ public class JoyconInput :MonoBehaviour
     }
     public static bool IsPressNextKey(NextFaseKeyButton faseKey)
     {
-        
         switch (faseKey) //カーソルが指しているアイテムが反応するボタンを押したとき
         {
             case JoyconInput.NextFaseKeyButton.Up:
@@ -92,19 +90,10 @@ public class JoyconInput :MonoBehaviour
     }
     private void Awake()
     {
+        
         if (!isInit)
         {
-            rButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
-            rButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
-            rButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
-            rButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
-            rButtons.Add(Joycon.Button.PLUS, InputFase.free);
-            rButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
-            lButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
-            lButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
-            lButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
-            lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
-            lButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
+            Debug.Log("do");
             foreach (Joycon j in JoyconManager.Instance.j)
             {
                 if (j.isLeft)
@@ -116,7 +105,16 @@ public class JoyconInput :MonoBehaviour
                     rJ = j;
                 }
             }
-            isInit = true;
+            rButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
+            rButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
+            rButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
+            rButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
+            rButtons.Add(Joycon.Button.PLUS, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
+            lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
+            isInit= true;
         }
     }
     /// <summary>
@@ -124,35 +122,15 @@ public class JoyconInput :MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (rJ == null || lJ==null)
-        {
-
-            foreach (Joycon j in JoyconManager.Instance.j)
-            {
-                if (j.isLeft)
-                {
-                    lJ = j;
-                }
-                else
-                {
-                    rJ = j;
-                }
-            }
-        }
-        else
-        {
-            UpdateButton(rButtons, rJ, Joycon.Button.DPAD_DOWN);
-            UpdateButton(rButtons, rJ, Joycon.Button.DPAD_LEFT);
-            UpdateButton(rButtons, rJ, Joycon.Button.DPAD_UP);
-            UpdateButton(rButtons, rJ, Joycon.Button.DPAD_RIGHT);
-            UpdateButton(rButtons, rJ, Joycon.Button.PLUS);
-            UpdateButton(rButtons, rJ, Joycon.Button.SHOULDER_1);
-            UpdateButton(lButtons, lJ, Joycon.Button.DPAD_DOWN);
-            UpdateButton(lButtons, lJ, Joycon.Button.DPAD_LEFT);
-            UpdateButton(lButtons, lJ, Joycon.Button.DPAD_UP);
-            UpdateButton(lButtons, lJ, Joycon.Button.DPAD_RIGHT);
-            UpdateButton(lButtons, lJ, Joycon.Button.SHOULDER_1);
-        }
+        UpdateButton(rButtons,rJ,Joycon.Button.DPAD_DOWN);
+        UpdateButton(rButtons,rJ,Joycon.Button.DPAD_LEFT);
+        UpdateButton(rButtons,rJ,Joycon.Button.DPAD_UP);
+        UpdateButton(rButtons,rJ,Joycon.Button.DPAD_RIGHT);
+        UpdateButton(rButtons,rJ,Joycon.Button.PLUS);
+        UpdateButton(lButtons, lJ, Joycon.Button.DPAD_DOWN);
+        UpdateButton(lButtons, lJ, Joycon.Button.DPAD_LEFT);
+        UpdateButton(lButtons, lJ, Joycon.Button.DPAD_UP);
+        UpdateButton(lButtons, lJ, Joycon.Button.DPAD_RIGHT);
     }
     /// <summary>
     /// 入力状況更新
@@ -166,9 +144,10 @@ public class JoyconInput :MonoBehaviour
         {
             if (buttons[bType] == InputFase.push)
             {
+
                 buttons[bType] = InputFase.hold;
             }
-            else if (buttons[bType]!=InputFase.hold)
+            else
             {
                 buttons[bType] = InputFase.push;
             }
