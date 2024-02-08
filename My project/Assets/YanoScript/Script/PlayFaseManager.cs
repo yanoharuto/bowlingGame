@@ -33,18 +33,21 @@ public class PlayFaseManager : MonoBehaviour
     [SerializeField] RouteManager rManager;
     [SerializeField] Fade fade;
     [SerializeField] Image fadeOut;
+    [SerializeField] JoyconInput jI;
     private void Start()
     {
         pIManager.SetItems(displayRule.items,displayRule.isHorizon);
-        
+        jI.enabled = true;
     }
     private void Update()
     {        
         var tempFase = nowFase;
+
         if(rManager.isGetRingPerfect)
         {
             fadeLoad.FadeInAndLoad("ResultScene");
         }
+        Debug.Log(nowFase);
         if (pIManager.isNextFase)
         {
             if (pIManager.isLoad)//ÉçÅ[Éh
@@ -86,7 +89,6 @@ public class PlayFaseManager : MonoBehaviour
             }
         }
         
-        Debug.Log(nowFase);
         if (nowFase == tempFase)
         {
             //ï™äÚ
