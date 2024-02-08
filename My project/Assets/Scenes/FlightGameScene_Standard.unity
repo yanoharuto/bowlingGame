@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.46602172, g: 0.5960813, b: 0.7371453, a: 1}
+  m_IndirectSpecularColor: {r: 0.46340516, g: 0.59258336, b: 0.7326547, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -134,9 +134,6 @@ GameObject:
   - component: {fileID: 59516177}
   - component: {fileID: 59516176}
   - component: {fileID: 59516175}
-  - component: {fileID: 59516183}
-  - component: {fileID: 59516182}
-  - component: {fileID: 59516181}
   - component: {fileID: 59516180}
   - component: {fileID: 59516179}
   - component: {fileID: 59516178}
@@ -243,51 +240,12 @@ MonoBehaviour:
   count: {fileID: 11400000, guid: 5c8157e89b843674bbebd7f6a606a4ab, type: 2}
   countProccesor: {fileID: 1633263289}
   menu: {fileID: 234134253}
-  pIManager: {fileID: 59516181}
+  pIManager: {fileID: 0}
   fadeLoad: {fileID: 59516178}
   gameOverProccesor: {fileID: 59516179}
   rManager: {fileID: 1797574660}
   fade: {fileID: 1604309280}
   fadeOut: {fileID: 1334362201}
-  jI: {fileID: 59516183}
---- !u!114 &59516181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59516174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb2af64936e03b84a8ee68a4bcf3118a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &59516182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59516174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405bad29b2b998c408059182c189d9e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnableIMU: 1
-  EnableLocalize: 1
---- !u!114 &59516183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59516174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1da309eac12ae2e4f9787ee8f712557d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &154505067
 PrefabInstance:
   m_ObjectHideFlags: 0

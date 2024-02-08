@@ -8,7 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 /// 移動用
 /// </summary>
 public class Move : MonoBehaviour
-{ 
+{
     //トリガーボタンを押したときのJoyconの傾き値
     private Quaternion holdStartJVec = Quaternion.identity;
     //トリガーボタンを押したならtrue

@@ -33,11 +33,9 @@ public class PlayFaseManager : MonoBehaviour
     [SerializeField] RouteManager rManager;
     [SerializeField] Fade fade;
     [SerializeField] Image fadeOut;
-    [SerializeField] JoyconInput jI;
     private void Start()
     {
         pIManager.SetItems(displayRule.items,displayRule.isHorizon);
-        jI.enabled=true;
     }
     private void Update()
     {        
@@ -87,8 +85,7 @@ public class PlayFaseManager : MonoBehaviour
                 
             }
         }
-        
-        if (nowFase == tempFase)
+        if (nowFase != tempFase)
         {
             //•ªŠò
             switch (nowFase)

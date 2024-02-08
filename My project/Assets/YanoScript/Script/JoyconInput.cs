@@ -8,17 +8,16 @@ using UnityEngine;
 /// </summary>
 public class JoyconInput :MonoBehaviour
 {
-    static public Joycon rJ { get; private set; }
-    static public Joycon lJ { get; private set; }
-    static bool isInit=false;
+    public static Joycon rJ { get; private set; }
+    public static Joycon lJ { get; private set; }
     /// <summary>
     /// 左ボタンの入力段階リスト
     /// </summary>
-    static private Dictionary<Joycon.Button,InputFase> lButtons = new Dictionary<Joycon.Button, InputFase>();
+    private static Dictionary<Joycon.Button,InputFase> lButtons = new Dictionary<Joycon.Button, InputFase>();
     /// <summary>
     /// 右ボタンの入力段階リスト
     /// </summary>
-    static private Dictionary<Joycon.Button,InputFase> rButtons = new Dictionary<Joycon.Button, InputFase>();
+    private static Dictionary<Joycon.Button,InputFase> rButtons = new Dictionary<Joycon.Button, InputFase>();
     public enum InputFase
     {
         free,//押してない
@@ -58,15 +57,15 @@ public class JoyconInput :MonoBehaviour
         switch (faseKey) //カーソルが指しているアイテムが反応するボタンを押したとき
         {
             case JoyconInput.NextFaseKeyButton.Up:
-                return JoyconInput.GetRButtonFase(Joycon.Button.DPAD_UP) == JoyconInput.InputFase.push;
+                return GetRButtonFase(Joycon.Button.DPAD_UP) == JoyconInput.InputFase.push;
             case JoyconInput.NextFaseKeyButton.Right:
-                return JoyconInput.GetRButtonFase(Joycon.Button.DPAD_RIGHT) == JoyconInput.InputFase.push;
+                return GetRButtonFase(Joycon.Button.DPAD_RIGHT) == JoyconInput.InputFase.push;
             case JoyconInput.NextFaseKeyButton.Down:
-                return JoyconInput.GetRButtonFase(Joycon.Button.DPAD_DOWN) == JoyconInput.InputFase.push;
+                return GetRButtonFase(Joycon.Button.DPAD_DOWN) == JoyconInput.InputFase.push;
             case JoyconInput.NextFaseKeyButton.Left:
-                return JoyconInput.GetRButtonFase(Joycon.Button.DPAD_LEFT) == JoyconInput.InputFase.push;
+                return GetRButtonFase(Joycon.Button.DPAD_LEFT) == JoyconInput.InputFase.push;
             case JoyconInput.NextFaseKeyButton.Any:
-                return JoyconInput.IsPressAnyButton(JoyconInput.InputFase.push);
+                return IsPressAnyButton(JoyconInput.InputFase.push);
         }
         return false;
     }
@@ -90,35 +89,30 @@ public class JoyconInput :MonoBehaviour
     }
     private void Awake()
     {
-        
-        if (!isInit)
+        Debug.Log("do");
+        foreach (Joycon j in JoyconManager.Instance.j)
         {
-            Debug.Log("do");
-            foreach (Joycon j in JoyconManager.Instance.j)
+            if (j.isLeft)
             {
-                if (j.isLeft)
-                {
-                    lJ = j;
-                }
-                else
-                {
-                    rJ = j;
-                }
+                lJ = j;
             }
-            rButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
-            rButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
-            rButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
-            rButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
-            rButtons.Add(Joycon.Button.PLUS, InputFase.free);
-            rButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
-
-            lButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
-            lButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
-            lButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
-            lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
-            lButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
-            isInit= true;
+            else
+            {
+                rJ = j;
+            }
         }
+        rButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
+        rButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
+        rButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
+        rButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
+        rButtons.Add(Joycon.Button.PLUS, InputFase.free);
+        rButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
+
+        lButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
+        lButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
+        lButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
+        lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
+        lButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
     }
     /// <summary>
     /// 

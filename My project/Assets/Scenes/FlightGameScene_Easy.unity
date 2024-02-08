@@ -1237,8 +1237,6 @@ GameObject:
   - component: {fileID: 725626665}
   - component: {fileID: 725626664}
   - component: {fileID: 725626663}
-  - component: {fileID: 725626662}
-  - component: {fileID: 725626661}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1246,32 +1244,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &725626661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 725626660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405bad29b2b998c408059182c189d9e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnableIMU: 1
-  EnableLocalize: 1
---- !u!114 &725626662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 725626660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1da309eac12ae2e4f9787ee8f712557d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &725626663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1309,7 +1281,6 @@ MonoBehaviour:
   rManager: {fileID: 1797574660}
   fade: {fileID: 408109893}
   fadeOut: {fileID: 408109907}
-  jI: {fileID: 725626662}
 --- !u!114 &725626665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2447,6 +2418,10 @@ PrefabInstance:
     - target: {fileID: 3897317745615360529, guid: baa2068d0dfa0ed4f96f86f67ea2f0bc, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012400573549491018, guid: baa2068d0dfa0ed4f96f86f67ea2f0bc, type: 3}
+      propertyPath: ji
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4012400573549491018, guid: baa2068d0dfa0ed4f96f86f67ea2f0bc, type: 3}
       propertyPath: setSpeed

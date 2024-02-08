@@ -9,7 +9,6 @@ using UnityEngine;
 public class FlyShip : MonoBehaviour
 {
     [SerializeField] Move move;
-
     enum GameFase
     {
         start,
@@ -34,7 +33,7 @@ public class FlyShip : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag== "Obstacle")
+        if (other.tag == "Obstacle") 
         {
             isAlive = false;
             move.enabled= false;

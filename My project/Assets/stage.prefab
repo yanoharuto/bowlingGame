@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3708998776764757117}
   - component: {fileID: 3708998776764757058}
   - component: {fileID: 3708998776764757059}
+  - component: {fileID: 2875088698771811359}
   m_Layer: 0
   m_Name: Ocean (4)
   m_TagString: Obstacle
@@ -100,6 +101,19 @@ MonoBehaviour:
   waveFrequency: 0.5
   waveLength: 0.5
   waveOriginPosition: {x: 0, y: 0, z: 0}
+--- !u!65 &2875088698771811359
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708998776764757057}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 750, y: 0.9999399, z: 750}
+  m_Center: {x: 0, y: -0.000006273389, z: 0}
 --- !u!1 &3708998777103834036
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +247,7 @@ GameObject:
   - component: {fileID: 3708998777352201695}
   - component: {fileID: 3708998777352201692}
   - component: {fileID: 3708998777352201693}
-  - component: {fileID: 3708998777352201506}
+  - component: {fileID: 8987718460481488590}
   m_Layer: 0
   m_Name: Ocean (1)
   m_TagString: Obstacle
@@ -322,20 +336,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3708998777352201507}
   m_Mesh: {fileID: 4300000, guid: ebfb4988eb16add4784122504f75fe2f, type: 2}
---- !u!64 &3708998777352201506
-MeshCollider:
+--- !u!65 &8987718460481488590
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3708998777352201507}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ebfb4988eb16add4784122504f75fe2f, type: 2}
+  serializedVersion: 2
+  m_Size: {x: 750, y: 0.9999399, z: 750}
+  m_Center: {x: 0, y: -0.000006273389, z: 0}
 --- !u!1 &3708998777624751142
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +361,7 @@ GameObject:
   - component: {fileID: 3708998777624751138}
   - component: {fileID: 3708998777624751139}
   - component: {fileID: 3708998777624751136}
+  - component: {fileID: 5214821815121076623}
   m_Layer: 0
   m_Name: Ocean (6)
   m_TagString: Obstacle
@@ -436,6 +450,19 @@ MonoBehaviour:
   waveFrequency: 0.5
   waveLength: 0.5
   waveOriginPosition: {x: 0, y: 0, z: 0}
+--- !u!65 &5214821815121076623
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708998777624751142}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 750, y: 0.9999399, z: 750}
+  m_Center: {x: 0, y: -0.000006273389, z: 0}
 --- !u!1 &3708998777915884063
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +475,7 @@ GameObject:
   - component: {fileID: 3708998777915884059}
   - component: {fileID: 3708998777915884056}
   - component: {fileID: 3708998777915884057}
+  - component: {fileID: 5113543597008072448}
   m_Layer: 0
   m_Name: Ocean (7)
   m_TagString: Obstacle
@@ -536,6 +564,19 @@ MonoBehaviour:
   waveFrequency: 0.5
   waveLength: 0.5
   waveOriginPosition: {x: 0, y: 0, z: 0}
+--- !u!65 &5113543597008072448
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708998777915884063}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 750, y: 0.9999399, z: 750}
+  m_Center: {x: 0, y: -0.000006273389, z: 0}
 --- !u!1 &3708998777931783269
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +589,7 @@ GameObject:
   - component: {fileID: 3708998777931783265}
   - component: {fileID: 3708998777931783270}
   - component: {fileID: 3708998777931783271}
+  - component: {fileID: 2374146283633272931}
   m_Layer: 0
   m_Name: Ocean (2)
   m_TagString: Obstacle
@@ -636,6 +678,19 @@ MonoBehaviour:
   waveFrequency: 0.5
   waveLength: 0.5
   waveOriginPosition: {x: 0, y: 0, z: 0}
+--- !u!65 &2374146283633272931
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708998777931783269}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 750, y: 0.9999399, z: 750}
+  m_Center: {x: 0, y: -0.000006273389, z: 0}
 --- !u!1 &3708998777994178717
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +703,7 @@ GameObject:
   - component: {fileID: 3708998777994178713}
   - component: {fileID: 3708998777994178718}
   - component: {fileID: 3708998777994178719}
+  - component: {fileID: 8251950709410035675}
   m_Layer: 0
   m_Name: Ocean (3)
   m_TagString: Obstacle
@@ -736,6 +792,19 @@ MonoBehaviour:
   waveFrequency: 0.5
   waveLength: 0.5
   waveOriginPosition: {x: 0, y: 0, z: 0}
+--- !u!65 &8251950709410035675
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708998777994178717}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 750, y: 0.9999399, z: 750}
+  m_Center: {x: 0, y: -0.000006273389, z: 0}
 --- !u!1 &3708998778221952365
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,8 +817,8 @@ GameObject:
   - component: {fileID: 3708998778221952367}
   - component: {fileID: 3708998778221952360}
   - component: {fileID: 3708998778221952361}
-  - component: {fileID: 3708998778221952366}
   - component: {fileID: 4463205272977539159}
+  - component: {fileID: 1158070920695546131}
   m_Layer: 0
   m_Name: Ocean
   m_TagString: Obstacle
@@ -838,20 +907,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3708998778221952365}
   m_Mesh: {fileID: 4300000, guid: ebfb4988eb16add4784122504f75fe2f, type: 2}
---- !u!64 &3708998778221952366
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3708998778221952365}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ebfb4988eb16add4784122504f75fe2f, type: 2}
 --- !u!65 &4463205272977539159
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -865,6 +920,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 750, y: 2.9997435, z: 750}
   m_Center: {x: 0, y: 0.00012797117, z: 0}
+--- !u!65 &1158070920695546131
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708998778221952365}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 750, y: 0.9999399, z: 750}
+  m_Center: {x: 0, y: -0.000006273389, z: 0}
 --- !u!1 &3708998778287686762
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,6 +945,7 @@ GameObject:
   - component: {fileID: 3708998778287686758}
   - component: {fileID: 3708998778287686759}
   - component: {fileID: 3708998778287686756}
+  - component: {fileID: 1789023774222453578}
   m_Layer: 0
   m_Name: Ocean (5)
   m_TagString: Obstacle
@@ -965,6 +1034,19 @@ MonoBehaviour:
   waveFrequency: 0.5
   waveLength: 0.5
   waveOriginPosition: {x: 0, y: 0, z: 0}
+--- !u!65 &1789023774222453578
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708998778287686762}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 750, y: 0.9999399, z: 750}
+  m_Center: {x: 0, y: -0.000006273389, z: 0}
 --- !u!1 &3708998778458343979
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,6 +1059,7 @@ GameObject:
   - component: {fileID: 3708998778458343975}
   - component: {fileID: 3708998778458343972}
   - component: {fileID: 3708998778458343973}
+  - component: {fileID: 3847598103866164909}
   m_Layer: 0
   m_Name: Ocean (8)
   m_TagString: Obstacle
@@ -1065,6 +1148,19 @@ MonoBehaviour:
   waveFrequency: 0.5
   waveLength: 0.5
   waveOriginPosition: {x: 0, y: 0, z: 0}
+--- !u!65 &3847598103866164909
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3708998778458343979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 750, y: 0.9999399, z: 750}
+  m_Center: {x: 0, y: -0.000006273389, z: 0}
 --- !u!1001 &129224209014988467
 PrefabInstance:
   m_ObjectHideFlags: 0

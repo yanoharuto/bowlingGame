@@ -30,7 +30,7 @@ public class PlayItemManager : MonoBehaviour
     private void Update()
     {
         var sValue = JoyconInput.lJ.GetStick();
-
+        Debug.Log(sValue[0]);
         if (isHorizon && Mathf.Abs(sValue[0]) < 0.1f) 
         {
             if (sValue[0] < 0) 
