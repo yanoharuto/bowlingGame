@@ -16,6 +16,7 @@ public class PlayItemManager : MonoBehaviour
         isHorizon = setHorizon;
         itemNum = 0;
         isNextFase = false;
+        Debug.Log(items.Count);
     }
 
     public PlayFaseManager.Fase GetNextFase()
@@ -69,7 +70,6 @@ public class PlayItemManager : MonoBehaviour
                 }
             }
         }
-
         isNextFase = JoyconInput.IsPressNextKey(items[itemNum].nextFaseKeyButton);
         isLoad = items[itemNum].isLoad;
     }
