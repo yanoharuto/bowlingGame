@@ -87,7 +87,6 @@ public class JoyconManager: MonoBehaviour
 
     void Update()
     {
-		Debug.Log("apd");
         for (int i = 0; i < j.Count; ++i)
 		{	
 			j[i].Update();

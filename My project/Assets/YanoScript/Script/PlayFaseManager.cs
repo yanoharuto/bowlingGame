@@ -38,6 +38,8 @@ public class PlayFaseManager : MonoBehaviour
     {
         pIManager.SetItems(displayRule.items,displayRule.isHorizon);
         jI.enabled = true;
+        Debug.Log("start");
+        nowFase = Fase.fadeOut;
     }
     private void Update()
     {        
