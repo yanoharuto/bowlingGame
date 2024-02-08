@@ -28,7 +28,7 @@ public class Text_Get : MonoBehaviour
 
         if(tg_ScoreManager.getset_newRecodeFlag == true)
         {
-            newRecode.active = true;
+            newRecode.SetActive(true);
         }
     }
 
