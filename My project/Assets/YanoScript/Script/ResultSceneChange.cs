@@ -19,7 +19,7 @@ public class ResultSceneChange : MonoBehaviour
         }
         else if(JoyconInput.GetRButtonFase(Joycon.Button.DPAD_RIGHT)==JoyconInput.InputFase.push)
         {
-            StartCoroutine(fadeIn.FadeInAndLoad(img, "TitleScene", 1f)) ;
+            StartCoroutine(fadeIn.FadeInAndLoad(img, "TitleScene 1", 1f)) ;
         }
 
     }

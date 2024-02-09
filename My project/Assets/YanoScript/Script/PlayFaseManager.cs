@@ -59,7 +59,7 @@ public class PlayFaseManager : MonoBehaviour
                 var loadName = pIManager.GetNextLoadStageName();
                 Debug.Log(loadName);
                 nowFade = Fase.fadeIn;
-                StartCoroutine(fadeLoad.FadeInAndLoad(fadeOut,loadName));
+                StartCoroutine(fadeLoad.FadeInAndLoad(fadeOut, "TitleScene 1"));
             }
             else
             {

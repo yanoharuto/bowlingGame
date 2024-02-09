@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary>
 public class Ring : MonoBehaviour
 {
+    [SerializeField] MeshRenderer r;
     //€‚ñ‚¾‚©‚Ç‚¤‚©‚Ì”»’è
     public bool isDead { get; private set; } = false;
     //ŠÑ’Ê‚µ‚½‚ç€‚Ê
@@ -14,14 +15,8 @@ public class Ring : MonoBehaviour
         if(other.tag == "Player")
         {
             isDead = true;
-        }
-    }
-    //ŠÑ’Ê‚Ìˆ—‚ªI‚í‚Á‚½‚ç
-    public void OnExitPlayer()
-    {
-        if(isDead)
-        {
-            Destroy(gameObject);
+            r.enabled = false;
+            Debug.Log("false");
         }
     }
 }

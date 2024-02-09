@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f44f45e8604139a45af028205f4b57a8, type: 3}
-  m_Name: Standerd
+  m_Name: Bonus
   m_EditorClassIdentifier: 
   setCursorPos: {x: 360, y: -60}
   setNextFase: 0
-  setNextSceneName: FlightGameScene_Standard
+  setNextSceneName: FlightGameScene_Hard
   setIsLoadScene: 1
   setIsNotCursor: 0
   setNextKeyButton: 1

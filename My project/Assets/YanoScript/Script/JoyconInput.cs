@@ -100,18 +100,23 @@ public class JoyconInput :MonoBehaviour
                     rJ = j;
                 }
             }
+        if (rButtons.Count == 0)
+        {
             rButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
             rButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
             rButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
             rButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
             rButtons.Add(Joycon.Button.PLUS, InputFase.free);
             rButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
-
+        }
+        if (lButtons.Count == 0)
+        {
             lButtons.Add(Joycon.Button.DPAD_DOWN, InputFase.free);
             lButtons.Add(Joycon.Button.DPAD_UP, InputFase.free);
             lButtons.Add(Joycon.Button.DPAD_RIGHT, InputFase.free);
             lButtons.Add(Joycon.Button.DPAD_LEFT, InputFase.free);
             lButtons.Add(Joycon.Button.SHOULDER_1, InputFase.free);
+        }
         }
     
     /// <summary>

@@ -17,6 +17,7 @@ public class FlyShip : MonoBehaviour
     }
     public bool isAlive { get; private set; } = true;
     [SerializeField] EffectPlayer eP;
+    float time = 0;
     /// <summary>
     /// ˆÊ’u‚ð“`‚¦‚é
     /// </summary>
@@ -33,6 +34,11 @@ public class FlyShip : MonoBehaviour
         if (PlayFaseManager.nowFade == PlayFaseManager.Fase.fadeIn) 
         {
             isAlive = true;
+        }
+        Vector3 v = transform.position;
+        if(v.magnitude>4000.0f)
+        {
+            transform.LookAt(Vector3.zero);
         }
     }
     private void OnTriggerEnter(Collider other)

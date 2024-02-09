@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/FlightGameScene_Easy.unity
     guid: 5e485e906b8c484418785cbb9d051954
   - enabled: 1
-    path: Assets/Scenes/FlightGameScene_Standard.unity
+    path: Assets/Scenes/FlightGameScene_Bonus.unity
     guid: dad9550ac4427014688a59be01289ae8
   - enabled: 1
     path: Assets/Scenes/FlightGameScene_Hard.unity
@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ResultScene.unity
     guid: 2aa4f7464761f3641a15ca874aa28e8c
+  - enabled: 1
+    path: Assets/Scenes/TitleScene 1.unity
+    guid: 3fcab976b66919f4c8b9d6cb90c92812
   m_configObjects: {}

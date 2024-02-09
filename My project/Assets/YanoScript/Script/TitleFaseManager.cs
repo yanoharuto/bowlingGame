@@ -48,21 +48,7 @@ public class TitleFaseManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (fadeF)
-        {
-            Debug.Log(image.color.a);
-            if (image.color.a <= 0.01f)
-            {
-                var c = image.color;
-                c.a -= 0.01f;
-                image.color = c;
-            }
-            else
-            {
-                fadeF = false ;
-            }
-        }
-        else if (!isLoadScene)
+        if (!isLoadScene)
         {
             var item = cursor.GetTitleItem();
             var isNextFase = false;
