@@ -15,7 +15,6 @@ public class PlayItemManager : MonoBehaviour
         items = setItem;
         isHorizon = setHorizon;
         itemNum = 0;
-        Debug.Log(itemNum);
         isNextFase = false;
     }
 

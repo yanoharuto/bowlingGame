@@ -17,6 +17,10 @@ public class GameObjectPosition
         {
             tagObject.Add(gameObject.tag, gameObject);
         }
+        else
+        {
+            tagObject[gameObject.tag] = gameObject;
+        }
     }
     /// <summary>
     /// 引数のオブジェクトを削除
@@ -37,6 +41,10 @@ public class GameObjectPosition
     public static Vector3 GetDictionaryObjectPositon(string tagName)
     {
         return tagObject[tagName].transform.position;
+    }
+    public static bool IsContain(string tag)
+    {
+        return tagObject.ContainsKey(tag);
     }
     /// <summary>
     /// 引数のタグのオブジェクトの向き

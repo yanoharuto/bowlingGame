@@ -41,8 +41,6 @@ public class PlayFaseManager : MonoBehaviour
     private void Update()
     {        
         var tempFase = nowFade;
-        Debug.Log(nowFade);
-        Debug.Log(rManager.isGetRingPerfect);
         if (nowFade == Fase.fadeIn && fadeOut.color.a >= 0.99f)
         {
             nowFade = Fase.fadeOut;
